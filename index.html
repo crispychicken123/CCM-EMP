@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR Master v6.3 - Attendance & Schedule Management</title>
+    <title>HR Master v6.4 - Ultimate Edition</title>
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -76,10 +76,7 @@
             z-index: 2000;
             display: none;
         }
-        
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
+        @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
         /* --- ALERT BANNER --- */
         #globalAlerts {
@@ -107,42 +104,10 @@
         /* --- PRINT STYLES --- */
         @media print {
             body * { visibility: hidden; height: auto; overflow: visible; display: none !important; }
-            
-            #printContainer, #printContainer * { 
-                visibility: visible !important; 
-                display: block !important; 
-            }
-            
-            #printContainer {
-                position: static !important; 
-                left: 0 !important; 
-                top: 0 !important; 
-                width: 100% !important; 
-                z-index: 9999; 
-                background: white; 
-                padding: 20px; 
-                color: black;
-                height: auto !important;
-                overflow: visible !important;
-            }
-
-            table.print-table {
-                width: 100% !important;
-                border-collapse: collapse;
-                border-spacing: 0;
-                font-size: 12px;
-            }
-            
-            th.print-th, td.print-td {
-                border: 1px solid #000 !important; 
-                color: black !important; 
-                padding: 8px !important;
-                text-align: left !important;
-                vertical-align: middle !important;
-                position: static !important; 
-                background: white !important;
-            }
-
+            #printContainer, #printContainer * { visibility: visible !important; display: block !important; }
+            #printContainer { position: static !important; left: 0 !important; top: 0 !important; width: 100% !important; z-index: 9999; background: white; padding: 20px; color: black; height: auto !important; overflow: visible !important; }
+            table.print-table { width: 100% !important; border-collapse: collapse; border-spacing: 0; font-size: 12px; }
+            th.print-th, td.print-td { border: 1px solid #000 !important; color: black !important; padding: 8px !important; text-align: left !important; vertical-align: middle !important; position: static !important; background: white !important; }
             .no-print { display: none !important; }
         }
 
@@ -168,10 +133,7 @@
             cursor: pointer;
             transition: var(--transition);
         }
-        .pin-btn:hover {
-            background: var(--bg-body);
-            transform: scale(1.1);
-        }
+        .pin-btn:hover { background: var(--bg-body); transform: scale(1.1); }
         #pinInput {
             background: var(--bg-body);
             border: 1px solid var(--border);
@@ -208,624 +170,153 @@
 
         .controls { display: flex; align-items: center; gap: 15px; }
         .btn-icon { 
-            background: transparent; 
-            border: 1px solid var(--border); 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            cursor: pointer; 
-            color: var(--text-muted); 
-            transition: var(--transition);
+            background: transparent; border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); transition: var(--transition);
         }
         .btn-icon:hover { background: var(--bg-body); color: var(--primary); transform: translateY(-2px); }
 
         /* --- SYSTEM MENU --- */
-        .system-menu { 
-            position: relative;
-            display: flex; 
-            align-items: center;
-        }
-        .sys-btn { 
-            background: var(--surface); 
-            border: 1px solid var(--border); 
-            padding: 8px 12px; 
-            border-radius: 8px; 
-            font-size: 13px; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            color: var(--text-main);
-            transition: var(--transition);
-        }
+        .system-menu { position: relative; display: flex; align-items: center; }
+        .sys-btn { background: var(--surface); border: 1px solid var(--border); padding: 8px 12px; border-radius: 8px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-main); transition: var(--transition); }
         .sys-btn:hover { background: var(--bg-body); }
         .sys-dropdown { 
-            position: absolute; 
-            top: 100%; 
-            right: 0;
-            background: var(--surface); 
-            border: 1px solid var(--border); 
-            border-radius: 8px; 
-            width: 260px; 
-            box-shadow: var(--shadow-lg); 
-            display: none; 
-            flex-direction: column; 
-            padding: 5px; 
-            margin-top: 5px; 
-            z-index: 100;
-            animation: slideDown 0.2s ease-out;
+            position: absolute; top: 100%; right: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; width: 260px; box-shadow: var(--shadow-lg); display: none; flex-direction: column; padding: 5px; margin-top: 5px; z-index: 100; animation: slideDown 0.2s ease-out;
         }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         .sys-dropdown.show { display: flex; }
-        .sys-item { 
-            padding: 10px; 
-            font-size: 13px; 
-            cursor: pointer; 
-            border-radius: 4px; 
-            display: flex; 
-            align-items: center; 
-            gap: 10px; 
-            color: var(--text-main);
-            transition: var(--transition);
-        }
+        .sys-item { padding: 10px; font-size: 13px; cursor: pointer; border-radius: 4px; display: flex; align-items: center; gap: 10px; color: var(--text-main); transition: var(--transition); }
         .sys-item:hover { background: var(--bg-body); }
         .sys-item i { width: 20px; text-align: center; color: var(--text-muted); }
         .sys-item.danger { color: var(--danger); }
         .sys-item.danger i { color: var(--danger); }
         .sys-separator { height: 1px; background: var(--border); margin: 5px 0; width: 100%; }
 
-        main { 
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-            padding: 20px; 
-            gap: 20px; 
-            overflow: hidden; 
-            max-width: 1900px; 
-            margin: 0 auto; 
-            width: 100%;
-            position: relative;
-        }
+        main { flex: 1; display: flex; flex-direction: column; padding: 20px; gap: 20px; overflow: hidden; max-width: 1900px; margin: 0 auto; width: 100%; position: relative; }
         
-        .tabs { 
-            display: flex; 
-            gap: 10px; 
-            margin-bottom: 10px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 10px;
-        }
-        .tab-btn { 
-            padding: 8px 20px; 
-            border: none; 
-            background: var(--surface); 
-            color: var(--text-muted); 
-            font-weight: 600; 
-            border-radius: 8px; 
-            cursor: pointer; 
-            border: 1px solid var(--border); 
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .tab-btn.active { 
-            background: var(--primary); 
-            color: white; 
-            border-color: var(--primary);
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3);
-        }
-        .tab-btn:hover:not(.active) { 
-            background: var(--bg-body); 
-            transform: translateY(-2px);
-        }
+        .tabs { display: flex; gap: 10px; margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .tab-btn { padding: 8px 20px; border: none; background: var(--surface); color: var(--text-muted); font-weight: 600; border-radius: 8px; cursor: pointer; border: 1px solid var(--border); transition: var(--transition); display: flex; align-items: center; gap: 8px; }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3); }
+        .tab-btn:hover:not(.active) { background: var(--bg-body); transform: translateY(-2px); }
 
-        .view-section { 
-            display: none; 
-            flex-direction: column; 
-            gap: 20px; 
-            height: 100%;
-            animation: fadeIn 0.3s ease-out;
-            flex: 1;
-            overflow: hidden;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .view-section { display: none; flex-direction: column; gap: 20px; height: 100%; animation: fadeIn 0.3s ease-out; flex: 1; overflow: hidden; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .view-section.active { display: flex; }
 
-        .toolbar { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: var(--surface); 
-            padding: 16px 20px; 
-            border-radius: var(--radius); 
-            box-shadow: var(--shadow); 
-            flex-wrap: wrap; 
-            gap: 15px; 
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            flex-shrink: 0;
-        }
+        .toolbar { display: flex; justify-content: space-between; align-items: center; background: var(--surface); padding: 16px 20px; border-radius: var(--radius); box-shadow: var(--shadow); flex-wrap: wrap; gap: 15px; border: 1px solid var(--border); transition: var(--transition); flex-shrink: 0; }
         .toolbar:hover { box-shadow: var(--shadow-lg); }
-        .search-wrapper { 
-            position: relative; 
-            width: 300px; 
-        }
-        .search-wrapper i { 
-            position: absolute; 
-            left: 12px; 
-            top: 50%; 
-            transform: translateY(-50%); 
-            color: var(--text-muted); 
-        }
-
-        .search-input { 
-            width: 100%; 
-            padding: 10px 10px 10px 38px; 
-            border: 1px solid var(--border); 
-            border-radius: 8px; 
-            background: var(--bg-body); 
-            color: var(--text-main); 
-            font-family: inherit;
-            transition: var(--transition);
-        }
-        .search-input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
         
-        .actions { 
-            display: flex; 
-            gap: 10px; 
-            flex-shrink: 0;
-        }
+        .search-wrapper { position: relative; width: 300px; }
+        .search-wrapper i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+        .search-input { width: 100%; padding: 10px 10px 10px 38px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-body); color: var(--text-main); font-family: inherit; transition: var(--transition); }
+        .search-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
         
-        .btn { 
-            padding: 10px 18px; 
-            border-radius: 8px; 
-            border: none; 
-            font-size: 13px; 
-            font-weight: 600; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            gap: 8px; 
-            color: white; 
-            transition: var(--transition);
-            box-shadow: var(--shadow);
-            white-space: nowrap;
-        }
+        .actions { display: flex; gap: 10px; flex-shrink: 0; }
+        
+        .btn { padding: 10px 18px; border-radius: 8px; border: none; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; color: white; transition: var(--transition); box-shadow: var(--shadow); white-space: nowrap; }
         .btn:active { transform: scale(0.98); }
         .btn-primary { background: var(--primary); }
         .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.3); }
-        .btn-secondary { 
-            background: var(--surface); 
-            color: var(--text-main); 
-            border: 1px solid var(--border);
-        }
+        .btn-secondary { background: var(--surface); color: var(--text-main); border: 1px solid var(--border); }
         .btn-secondary:hover { background: var(--bg-body); transform: translateY(-2px); }
         .btn-success { background: var(--success); }
         .btn-warning { background: var(--warning); color: white; }
         .btn-danger { background: var(--secondary); }
         .btn-info { background: #8b5cf6; }
 
-        .table-wrapper { 
-            flex: 1; 
-            background: var(--surface); 
-            border-radius: var(--radius); 
-            box-shadow: var(--shadow-lg); 
-            overflow: auto; 
-            position: relative; 
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            min-height: 200px;
-        }
+        .table-wrapper { flex: 1; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: auto; position: relative; border: 1px solid var(--border); transition: var(--transition); min-height: 200px; }
         .table-wrapper:hover { box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15); }
         
-        table { 
-            border-collapse: separate; 
-            border-spacing: 0; 
-            width: 100%; 
-            min-width: 1200px; 
-        }
-        th, td { 
-            padding: 12px; 
-            text-align: center; 
-            border-bottom: 1px solid var(--border); 
-            border-right: 1px solid var(--border); 
-            font-size: 13px; 
-            vertical-align: middle;
-            transition: var(--transition);
-        }
+        table { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 1200px; }
+        th, td { padding: 12px; text-align: center; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); font-size: 13px; vertical-align: middle; transition: var(--transition); }
         
+        /* --- FIXED: Sticky Table Layers --- */
         .thead th { 
-            background: var(--bg-body); 
-            color: var(--text-muted); 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            font-size: 11px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 20; 
-            border-bottom: 2px solid var(--border);
-            left: 0;
+            background: var(--bg-body); color: var(--text-muted); font-weight: 700; text-transform: uppercase; font-size: 11px; position: sticky; top: 0; z-index: 20; border-bottom: 2px solid var(--border); left: 0;
         }
         
         th:first-child, td:first-child { 
-            position: sticky; 
-            left: 0; 
-            z-index: 10; 
-            background: var(--surface); 
-            text-align: left; 
-            min-width: 220px; 
-            padding-left: 20px; 
-            border-right: 2px solid var(--border); 
+            position: sticky; left: 0; z-index: 10; background: var(--surface); text-align: left; min-width: 220px; padding-left: 20px; border-right: 2px solid var(--border); 
+        }
+
+        /* FIX: Corner cell z-index */
+        th:first-child {
+            z-index: 30;
         }
 
         .summary-table th { background: #f8fafc; font-weight: 600; border: 1px solid #ccc; }
         .summary-table td { border: 1px solid #ccc; padding: 8px; }
-        .period-header { 
-            font-size: 16px; 
-            font-weight: 700; 
-            color: #333; 
-            text-align: center; 
-            margin-bottom: 10px;
-            background: white;
-            padding: 10px;
-            border: 1px solid #eee;
-        }
+        .period-header { font-size: 16px; font-weight: 700; color: #333; text-align: center; margin-bottom: 10px; background: white; padding: 10px; border: 1px solid #eee; }
 
-        .emp-cell { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            cursor: pointer; 
-            transition: var(--transition); 
-            border-radius: 6px; 
-            padding: 4px;
-        }
-        .emp-cell:hover { 
-            background-color: rgba(59, 130, 246, 0.1); 
-            transform: translateX(4px);
-        }
-        .emp-avatar { 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 2px solid var(--surface); 
-            box-shadow: 0 0 0 1px var(--border);
-        }
-        .emp-info { 
-            display: flex; 
-            flex-direction: column; 
-        }
-        .emp-name { 
-            font-weight: 600; 
-            color: var(--text-main); 
-            font-size: 14px; 
-        }
-        .emp-meta { 
-            font-size: 11px; 
-            color: var(--text-muted); 
-            margin-top: 2px; 
-        }
+        .emp-cell { display: flex; align-items: center; gap: 14px; cursor: pointer; transition: var(--transition); border-radius: 6px; padding: 4px; }
+        .emp-cell:hover { background-color: rgba(59, 130, 246, 0.1); transform: translateX(4px); }
+        .emp-avatar { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid var(--surface); box-shadow: 0 0 0 1px var(--border); }
+        .emp-info { display: flex; flex-direction: column; }
+        .emp-name { font-weight: 600; color: var(--text-main); font-size: 14px; }
+        .emp-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-        .shift-cell { 
-            cursor: pointer; 
-            transition: 0.1s; 
-            user-select: none; 
-            font-size: 12px; 
-            line-height: 1.4; 
-        }
-        .shift-cell:hover { 
-            background-color: rgba(59, 130, 246, 0.1); 
-        }
-        .off-day { 
-            background-color: #f3f4f6; 
-            color: var(--text-muted); 
-            font-style: italic; 
-            letter-spacing: 1px; 
-        }
-        .shift-time { 
-            display: block; 
-            font-weight: 600; 
-            color: var(--text-main); 
-        }
-        .split-sep { 
-            color: var(--primary); 
-            font-size: 10px; 
-            margin: 2px 0; 
-            display: block; 
-        }
+        .shift-cell { cursor: pointer; transition: 0.1s; user-select: none; font-size: 12px; line-height: 1.4; }
+        .shift-cell:hover { background-color: rgba(59, 130, 246, 0.1); }
+        .off-day { background-color: #f3f4f6; color: var(--text-muted); font-style: italic; letter-spacing: 1px; }
+        .shift-time { display: block; font-weight: 600; color: var(--text-main); }
+        .split-sep { color: var(--primary); font-size: 10px; margin: 2px 0; display: block; }
 
         /* Status Badges */
-        .status-badge { 
-            padding: 4px 10px; 
-            border-radius: 20px; 
-            font-size: 11px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            display: inline-block;
-            transition: var(--transition);
-        }
-        .status-badge:hover {
-            transform: scale(1.05);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .status-pending { 
-            background: #fef3c7; 
-            color: #92400e; 
-        }
-        .status-approved { 
-            background: #dcfce7; 
-            color: #166534; 
-        }
-        .status-rejected { 
-            background: #fee2e2; 
-            color: #991b1b; 
-        }
-        .status-error { 
-            background: #fecaca; 
-            color: #991b1b; 
-        }
-        .status-warn { 
-            background: #fef3c7; 
-            color: #92400e; 
-        }
-        .status-info { 
-            background: #dbeafe; 
-            color: #1e40af; 
-        }
+        .status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: inline-block; transition: var(--transition); }
+        .status-badge:hover { transform: scale(1.05); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .status-pending { background: #fef3c7; color: #92400e; }
+        .status-approved { background: #dcfce7; color: #166534; }
+        .status-rejected { background: #fee2e2; color: #991b1b; }
+        .status-error { background: #fecaca; color: #991b1b; }
+        .status-warn { background: #fef3c7; color: #92400e; }
+        .status-info { background: #dbeafe; color: #1e40af; }
 
         /* --- Enhanced Modals --- */
-        .modal { 
-            display: none; 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(5px); 
-            z-index: 2000; 
-            align-items: center; 
-            justify-content: center; 
-            opacity: 0; 
-            transition: opacity 0.3s ease-out;
-        }
-        .modal.active { 
-            display: flex; 
-            opacity: 1;
-        }
-        .modal-card { 
-            background: var(--surface); 
-            width: 90%; 
-            max-width: 600px; 
-            border-radius: 16px; 
-            padding: 0; 
-            box-shadow: var(--shadow-lg); 
-            transform: scale(0.95); 
-            transition: transform 0.3s ease-out;
-            max-height: 90vh; 
-            overflow: hidden; 
-            display: flex; 
-            flex-direction: column;
-        }
-        .modal.active .modal-card { 
-            transform: scale(1); 
-        }
-        .modal-header { 
-            padding: 20px 24px; 
-            border-bottom: 1px solid var(--border); 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: var(--bg-body);
-        }
-        .modal-title { 
-            font-size: 18px; 
-            font-weight: 700; 
-            color: var(--text-main); 
-        }
-        .close-modal { 
-            background: none; 
-            border: none; 
-            font-size: 20px; 
-            cursor: pointer; 
-            color: var(--text-muted); 
-            width: 32px; 
-            height: 32px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            transition: var(--transition);
-        }
-        .close-modal:hover { 
-            background: var(--border); 
-            transform: rotate(90deg);
-        }
-        .modal-body { 
-            padding: 24px; 
-            overflow-y: auto;
-        }
-        .modal-footer { 
-            padding: 20px 24px; 
-            border-top: 1px solid var(--border); 
-            display: flex; 
-            justify-content: flex-end; 
-            gap: 12px; 
-            background: var(--bg-body);
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease-out; }
+        .modal.active { display: flex; opacity: 1; }
+        .modal-card { background: var(--surface); width: 90%; max-width: 600px; border-radius: 16px; padding: 0; box-shadow: var(--shadow-lg); transform: scale(0.95); transition: transform 0.3s ease-out; max-height: 90vh; overflow: hidden; display: flex; flex-direction: column; }
+        .modal.active .modal-card { transform: scale(1); }
+        .modal-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--bg-body); }
+        .modal-title { font-size: 18px; font-weight: 700; color: var(--text-main); }
+        .close-modal { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-muted); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .close-modal:hover { background: var(--border); transform: rotate(90deg); }
+        .modal-body { padding: 24px; overflow-y: auto; }
+        .modal-footer { padding: 20px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 12px; background: var(--bg-body); }
         
-        .form-group { 
-            margin-bottom: 15px; 
-        }
-        .form-label { 
-            display: block; 
-            font-size: 12px; 
-            font-weight: 600; 
-            color: var(--text-muted); 
-            margin-bottom: 6px; 
-        }
-        .required::after { 
-            content: " *"; 
-            color: var(--secondary); 
-        }
-        .form-input, .form-select, .form-textarea { 
-            width: 100%; 
-            padding: 10px 12px; 
-            border: 1px solid var(--border); 
-            border-radius: 8px; 
-            font-family: inherit; 
-            font-size: 13px; 
-            background: var(--bg-body); 
-            color: var(--text-main);
-            transition: var(--transition);
-        }
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            outline: none;
-        }
-        .form-textarea { 
-            resize: vertical; 
-            min-height: 80px; 
-        }
-        .form-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 15px; 
-        }
-        .time-group { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 10px; 
-            align-items: center; 
-            background: var(--bg-body); 
-            padding: 10px; 
-            border-radius: 8px; 
-            border: 1px solid var(--border);
-        }
+        .form-group { margin-bottom: 15px; }
+        .form-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; }
+        .required::after { content: " *"; color: var(--secondary); }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 13px; background: var(--bg-body); color: var(--text-main); transition: var(--transition); }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); outline: none; }
+        .form-textarea { resize: vertical; min-height: 80px; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .time-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: center; background: var(--bg-body); padding: 10px; border-radius: 8px; border: 1px solid var(--border); }
 
         /* Toast Notifications */
-        .toast { 
-            position: fixed; 
-            bottom: 24px; 
-            right: 24px; 
-            background: #1f2937; 
-            color: white; 
-            padding: 14px 24px; 
-            border-radius: 8px; 
-            font-size: 14px; 
-            font-weight: 500; 
-            transform: translateY(100px); 
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            z-index: 2500;
-            box-shadow: var(--shadow-lg); 
-            display: flex; 
-            align-items: center; 
-            gap: 12px;
-            max-width: 350px;
-            border-left: 4px solid var(--success);
-        }
-        .toast.show { 
-            transform: translateY(0); 
-        }
-        .toast.success { 
-            border-left-color: var(--success); 
-        }
-        .toast.error { 
-            border-left-color: var(--secondary); 
-        }
-        .toast.info {
-            border-left-color: var(--primary);
-        }
-        .toast.warning {
-            border-left-color: var(--warning);
-        }
-
-        /* System Logs Styles */
-        .log-entry {
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--border);
-            font-size: 12px;
-        }
-        .log-entry:last-child {
-            border-bottom: none;
-        }
-        .log-time {
-            color: var(--text-muted);
-            font-size: 11px;
-            margin-right: 10px;
-        }
-        .log-level {
-            font-weight: 600;
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-right: 10px;
-            font-size: 10px;
-        }
-        .log-message {
-            flex: 1;
-        }
+        .toast { position: fixed; bottom: 24px; right: 24px; background: #1f2937; color: white; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; transform: translateY(100px); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 2500; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px; max-width: 350px; border-left: 4px solid var(--success); }
+        .toast.show { transform: translateY(0); }
+        .toast.success { border-left-color: var(--success); }
+        .toast.error { border-left-color: var(--secondary); }
+        .toast.info { border-left-color: var(--primary); }
 
         /* Stats Summary Cards */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        .stat-card {
-            background: var(--surface);
-            border-radius: var(--radius);
-            padding: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+        .stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 20px; }
+        .stat-card { background: var(--surface); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); text-align: center; }
+        .stat-value { font-size: 28px; font-weight: 700; color: var(--primary); margin-bottom: 5px; }
+        .stat-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
     <!-- Alert Banner -->
-    <div id="globalAlerts" class="no-print">
-        <!-- Dynamic Alerts injected by JS -->
-    </div>
-
+    <div id="globalAlerts" class="no-print"></div>
     <!-- Loading Spinner -->
     <div class="spinner no-print" id="loadingSpinner"></div>
 
-    <!-- Lock Screen (Hidden by default) -->
+    <!-- Lock Screen -->
     <div id="lockScreenModal" class="modal no-print">
         <div class="modal-card" style="text-align: center; padding-top: 50px; background: white; color: #333;">
             <h2 style="margin-bottom: 30px; color: var(--secondary);"><i class="fas fa-lock"></i> System Locked</h2>
             <p style="margin-bottom: 20px; color: #666;">Enter PIN to unlock</p>
             <input type="password" id="pinInput" maxlength="4" />
-            <div class="pin-pad" id="pinPad">
-                <!-- 1-9 generated by JS -->
-            </div>
+            <div class="pin-pad" id="pinPad"></div>
             <p style="margin-top: 20px; font-size: 12px; color: #999;">Default PIN: 0000</p>
             <button class="btn btn-secondary" onclick="app.unlockSystem('0000')" style="margin-top: 10px; width: 100%;">Unlock with Default PIN</button>
         </div>
@@ -836,71 +327,38 @@
         <div class="brand">
             <i class="fas fa-calendar-check"></i>
             <div>
-                <h1>HR Master <span>v6.3</span></h1>
+                <h1>HR Master <span>v6.4</span></h1>
                 <span style="font-size: 12px; color: var(--text-muted); font-weight: 500;">Attendance & Schedule Management</span>
             </div>
         </div>
         <div class="controls">
-            <!-- Lock Button -->
-            <button class="btn-icon" onclick="app.showLockScreen()" title="Lock System">
-                <i class="fas fa-lock"></i>
-            </button>
-
-            <!-- System Menu -->
+            <button class="btn-icon" onclick="app.showLockScreen()" title="Lock System"><i class="fas fa-lock"></i></button>
             <div class="system-menu">
                 <button class="sys-btn" onclick="app.toggleSystemMenu()">
                     <i class="fas fa-cog"></i> <i class="fas fa-ellipsis-v no-print"></i>
                 </button>
                 <div class="sys-dropdown" id="sysDropdown">
-                    <div class="sys-item" onclick="app.showSystemInfo()">
-                        <i class="fas fa-info-circle"></i> System Info
-                    </div>
-                    <div class="sys-item" onclick="app.showSystemLogs()">
-                        <i class="fas fa-clipboard-list"></i> System Logs
-                    </div>
-                    <div class="sys-item" onclick="app.downloadBackup()">
-                        <i class="fas fa-download"></i> Download Backup
-                    </div>
-                    <label class="sys-item">
-                        <i class="fas fa-file-upload"></i> Import CSV Staff
-                        <input type="file" id="importFile" accept=".csv" style="display:none;" onchange="app.importCSV(this)">
-                    </label>
-                    <label class="sys-item">
-                        <i class="fas fa-upload"></i> Restore Backup (JSON)
-                        <input type="file" id="restoreFile" accept=".json" style="display:none;" onchange="app.restoreBackup(this)">
-                    </label>
+                    <div class="sys-item" onclick="app.showSystemInfo()"><i class="fas fa-info-circle"></i> System Info</div>
+                    <div class="sys-item" onclick="app.showSystemLogs()"><i class="fas fa-clipboard-list"></i> System Logs</div>
+                    <div class="sys-item" onclick="app.downloadBackup()"><i class="fas fa-download"></i> Download Backup</div>
+                    <label class="sys-item"><i class="fas fa-file-upload"></i> Import CSV Staff <input type="file" id="importFile" accept=".csv" style="display:none;" onchange="app.importCSV(this)"></label>
+                    <label class="sys-item"><i class="fas fa-upload"></i> Restore Backup (JSON) <input type="file" id="restoreFile" accept=".json" style="display:none;" onchange="app.restoreBackup(this)"></label>
                     <div class="sys-separator"></div>
-                    <div class="sys-item danger" onclick="app.resetSystem()">
-                        <i class="fas fa-trash"></i> Reset All Data
-                    </div>
+                    <div class="sys-item danger" onclick="app.resetSystem()"><i class="fas fa-trash"></i> Reset All Data</div>
                 </div>
             </div>
-
-            <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Dark Mode">
-                <i class="fas fa-moon" id="themeIcon"></i>
-            </button>
+            <button class="btn-icon" onclick="app.toggleTheme()" title="Toggle Dark Mode"><i class="fas fa-moon" id="themeIcon"></i></button>
             <div style="font-family: 'Courier New', monospace; font-weight: 700; background: var(--text-main); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 14px;" id="clock">00:00</div>
         </div>
     </header>
 
     <!-- Main Content -->
     <main class="no-print">
-        
-        <!-- Navigation Tabs -->
         <div class="tabs">
-            <button class="tab-btn" onclick="app.switchTab('attendance')" id="btn-tab-attendance">
-                <i class="fas fa-calendar-day"></i> Attendance Log
-            </button>
-            <button class="tab-btn" onclick="app.switchTab('schedule')" id="btn-tab-schedule">
-                <i class="fas fa-clock"></i> Schedule
-            </button>
-            <button class="tab-btn" onclick="app.switchTab('requests')" id="btn-tab-requests">
-                <i class="fas fa-plane-departure"></i> Leave Requests
-            </button>
-            <!-- Summary is Active by Default -->
-            <button class="tab-btn active" onclick="app.switchTab('summary')" id="btn-tab-summary">
-                <i class="fas fa-chart-pie"></i> Summary Report
-            </button>
+            <button class="tab-btn" onclick="app.switchTab('attendance')" id="btn-tab-attendance"><i class="fas fa-calendar-day"></i> Attendance Log</button>
+            <button class="tab-btn" onclick="app.switchTab('schedule')" id="btn-tab-schedule"><i class="fas fa-clock"></i> Schedule</button>
+            <button class="tab-btn" onclick="app.switchTab('requests')" id="btn-tab-requests"><i class="fas fa-plane-departure"></i> Leave Requests</button>
+            <button class="tab-btn active" onclick="app.switchTab('summary')" id="btn-tab-summary"><i class="fas fa-chart-pie"></i> Summary Report</button>
         </div>
 
         <!-- VIEW: ATTENDANCE -->
@@ -913,50 +371,44 @@
                     </div>
                     <div style="flex:1;"></div>
                     <div class="actions">
-                        <button class="btn btn-warning" onclick="app.openOTModal()">
-                            <i class="fas fa-clock"></i> Edit OT
-                        </button>
-                        <button class="btn btn-secondary" onclick="app.openBulkModal()">
-                            <i class="fas fa-calendar-alt"></i> Bulk
-                        </button>
-                        <button class="btn btn-primary" onclick="app.openEmployeeModal()">
-                            <i class="fas fa-user-plus"></i> Add Employee
-                        </button>
+                        <button class="btn btn-warning" onclick="app.openOTModal()"><i class="fas fa-clock"></i> Edit OT</button>
+                        <button class="btn btn-secondary" onclick="app.openBulkModal()"><i class="fas fa-calendar-alt"></i> Bulk</button>
+                        <button class="btn btn-primary" onclick="app.openEmployeeModal()"><i class="fas fa-user-plus"></i> Add Employee</button>
                     </div>
                 </div>
             </div>
-
             <div style="display:flex; gap:10px; align-items:center; margin-bottom:-10px; padding:0 5px;">
                 <label style="font-size:12px; font-weight:600; color:var(--text-muted);">Month:</label>
                 <select id="monthSelect" style="padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px;"></select>
                 <select id="yearSelect" style="padding: 4px 12px; border: 1px solid var(--border); border-radius: 6px;"></select>
             </div>
-
             <div class="table-wrapper">
                 <table id="attendanceTable">
-                    <thead>
-                        <tr id="tableHeader">
-                            <th>Employee Details</th>
-                        </tr>
-                    </thead>
+                    <thead><tr id="tableHeader"><th>Employee Details</th></tr></thead>
                     <tbody id="tableBody"></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- VIEW: SCHEDULE -->
+        <!-- VIEW: SCHEDULE (UPDATED) -->
         <div id="view-schedule" class="view-section">
             <div class="toolbar">
                 <div style="display: flex; gap: 20px; align-items: center; width: 100%;">
                     <div style="display:flex; align-items:center; gap:10px;">
                         <i class="fas fa-calendar-week" style="font-size:24px; color:var(--primary);"></i>
-                        <h2 style="font-size:18px; font-weight:700;">Weekly Master Schedule</h2>
+                        <div>
+                            <h2 style="font-size:18px; font-weight:700; margin:0;">Weekly Schedule</h2>
+                            <span id="scheduleWeekRange" style="font-size:12px; color:var(--text-muted);">Loading...</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; gap:5px;">
+                        <button class="btn btn-secondary" onclick="app.prevWeek()" title="Previous Week"><i class="fas fa-chevron-left"></i></button>
+                        <button class="btn btn-secondary" onclick="app.todaySchedule()" title="This Week"><i class="fas fa-calendar-day"></i> Today</button>
+                        <button class="btn btn-secondary" onclick="app.nextWeek()" title="Next Week"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div style="flex:1;"></div>
                     <div class="actions">
-                        <button class="btn btn-secondary" onclick="app.printContent()">
-                            <i class="fas fa-print"></i> Print Schedule
-                        </button>
+                        <button class="btn btn-secondary" onclick="app.printContent()"><i class="fas fa-print"></i> Print</button>
                     </div>
                 </div>
             </div>
@@ -964,14 +416,7 @@
                 <table id="scheduleTable">
                     <thead>
                         <tr id="scheduleHeader">
-                            <th>Staff Member</th>
-                            <th>Sunday</th>
-                            <th>Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
+                            <!-- Headers will be generated by JS -->
                         </tr>
                     </thead>
                     <tbody id="scheduleBody"></tbody>
@@ -993,29 +438,18 @@
                         <input type="text" id="reqSearchInput" class="search-input" placeholder="Search..." onkeyup="app.handleReqSearch()">
                     </div>
                     <div class="actions">
-                        <button class="btn btn-primary" onclick="app.openRequestModal()">
-                            <i class="fas fa-plus-circle"></i> New Request
-                        </button>
+                        <button class="btn btn-primary" onclick="app.openRequestModal()"><i class="fas fa-plus-circle"></i> New Request</button>
                     </div>
                 </div>
             </div>
-
             <div class="table-wrapper">
                 <table class="req-table">
                     <thead>
                         <tr>
-                            <th>Employee</th>
-                            <th>Type</th>
-                            <th>Reason / Notes</th>
-                            <th>Dates (Start - End)</th>
-                            <th>Duration</th>
-                            <th>Status</th>
-                            <th class="no-print">Actions</th>
+                            <th>Employee</th><th>Type</th><th>Reason / Notes</th><th>Dates (Start - End)</th><th>Duration</th><th>Status</th><th class="no-print">Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="requestsBody">
-                        <!-- Populated by JS -->
-                    </tbody>
+                    <tbody id="requestsBody"></tbody>
                 </table>
             </div>
         </div>
@@ -1030,13 +464,10 @@
                     </div>
                     <div style="flex:1;"></div>
                     <div style="display: flex; gap: 15px;">
-                        <!-- Filter: Employee Name -->
                         <div class="search-wrapper" style="width: 200px;">
                             <i class="fas fa-search"></i>
                             <input type="text" id="summarySearchInput" class="search-input" placeholder="Filter by name" onkeyup="app.handleSummarySearch()">
                         </div>
-                        
-                        <!-- Filter: Period Range -->
                         <div style="display: flex; gap: 10px; align-items: center; background: var(--surface); padding: 5px 10px; border: 1px solid var(--border); border-radius: 8px;">
                             <label style="font-size:11px; font-weight:600; color:var(--text-muted);">Start</label>
                             <input type="date" id="summaryFilterStart" class="form-input" style="width: 140px; padding: 4px 8px; border: 1px solid var(--border);" onchange="app.renderSummary()">
@@ -1044,40 +475,19 @@
                             <input type="date" id="summaryFilterEnd" class="form-input" style="width: 140px; padding: 4px 8px; border: 1px solid var(--border);" onchange="app.renderSummary()">
                         </div>
                     </div>
-
-                    <!-- Action Buttons -->
                     <div class="actions">
-                        <button class="btn btn-info" onclick="app.exportToExcel()">
-                            <i class="fas fa-file-excel"></i> Export Excel
-                        </button>
-                        <button class="btn btn-secondary" onclick="app.exportToCSV()">
-                            <i class="fas fa-file-csv"></i> Export CSV
-                        </button>
-                        <button class="btn btn-secondary" onclick="app.printContent()">
-                            <i class="fas fa-print"></i> Print / PDF
-                        </button>
+                        <button class="btn btn-info" onclick="app.exportToExcel()"><i class="fas fa-file-excel"></i> Export Excel</button>
+                        <button class="btn btn-secondary" onclick="app.exportToCSV()"><i class="fas fa-file-csv"></i> Export CSV</button>
+                        <button class="btn btn-secondary" onclick="app.printContent()"><i class="fas fa-print"></i> Print / PDF</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Stats Summary Cards -->
             <div class="stats-container" id="statsContainer">
-                <div class="stat-card">
-                    <div class="stat-value" id="totalEmployees">0</div>
-                    <div class="stat-label">Total Employees</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="totalWorkingDays">0</div>
-                    <div class="stat-label">Working Days</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="totalOvertime">0</div>
-                    <div class="stat-label">Overtime Hours</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value" id="pendingRequests">0</div>
-                    <div class="stat-label">Pending Requests</div>
-                </div>
+                <div class="stat-card"><div class="stat-value" id="totalEmployees">0</div><div class="stat-label">Total Employees</div></div>
+                <div class="stat-card"><div class="stat-value" id="totalWorkingDays">0</div><div class="stat-label">Working Days</div></div>
+                <div class="stat-card"><div class="stat-value" id="totalOvertime">0</div><div class="stat-label">Overtime Hours</div></div>
+                <div class="stat-card"><div class="stat-value" id="pendingRequests">0</div><div class="stat-label">Pending Requests</div></div>
             </div>
 
             <div class="table-wrapper">
@@ -1085,16 +495,7 @@
                 <table class="summary-table" style="background:white; border:1px solid #000;">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Employee Name</th>
-                            <th>Working Days</th>
-                            <th>Absent Days</th>
-                            <th>Vacation Days</th>
-                            <th>Sick Days</th>
-                            <th>Total Days</th>
-                            <th>Overtime Hours</th>
-                            <th>Overtime Days</th>
-                            <th>Total Overtime</th>
+                            <th>No</th><th>Employee Name</th><th>Working Days</th><th>Absent Days</th><th>Vacation Days</th><th>Sick Days</th><th>Total Days</th><th>Overtime Hours</th><th>Overtime Days</th><th>Total Overtime</th>
                         </tr>
                     </thead>
                     <tbody id="summaryBody"></tbody>
@@ -1103,58 +504,34 @@
         </div>
     </main>
 
-    <!-- Hidden Print Container -->
     <div id="printContainer" class="no-print"></div>
 
     <!-- Modals -->
-    
     <!-- 1. Shift Edit Modal -->
     <div class="modal no-print" id="shiftModal">
         <div class="modal-card">
             <div class="modal-header">
-                <div class="modal-title" style="color:var(--primary);">
-                    <i class="fas fa-clock"></i> Edit Shift
-                </div>
+                <div class="modal-title" style="color:var(--primary);"><i class="fas fa-clock"></i> Edit Shift</div>
                 <button class="close-modal" onclick="app.closeModals()">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Employee</label>
-                    <input type="text" id="shiftEmpName" class="form-input" disabled style="background:var(--bg-body);">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Day</label>
-                    <input type="text" id="shiftDayName" class="form-input" disabled style="background:var(--bg-body);">
-                </div>
+                <div class="form-group"><label class="form-label">Employee</label><input type="text" id="shiftEmpName" class="form-input" disabled></div>
+                <div class="form-group"><label class="form-label">Day</label><input type="text" id="shiftDayName" class="form-input" disabled></div>
                 <div class="form-group">
                     <label class="form-label" style="display:flex; justify-content:space-between;">
                         <span>Primary Shift</span>
-                        <label style="font-weight:400; cursor:pointer;">
-                            <input type="checkbox" id="shiftOffDay" onchange="app.toggleShiftInputs()"> Off Day
-                        </label>
+                        <label style="font-weight:400; cursor:pointer;"><input type="checkbox" id="shiftOffDay" onchange="app.toggleShiftInputs()"> Off Day</label>
                     </label>
                     <div id="primaryShiftGroup" class="time-group">
-                        <div>
-                            <label class="form-label">Start</label>
-                            <input type="time" id="shiftStart1" class="form-input">
-                        </div>
-                        <div>
-                            <label class="form-label">End</label>
-                            <input type="time" id="shiftEnd1" class="form-input">
-                        </div>
+                        <div><label class="form-label">Start</label><input type="time" id="shiftStart1" class="form-input"></div>
+                        <div><label class="form-label">End</label><input type="time" id="shiftEnd1" class="form-input"></div>
                     </div>
                 </div>
                 <div class="form-group" id="secondaryShiftGroup">
                     <label class="form-label">Secondary Shift (Optional / Split)</label>
                     <div class="time-group">
-                        <div>
-                            <label class="form-label">Start</label>
-                            <input type="time" id="shiftStart2" class="form-input">
-                        </div>
-                        <div>
-                            <label class="form-label">End</label>
-                            <input type="time" id="shiftEnd2" class="form-input">
-                        </div>
+                        <div><label class="form-label">Start</label><input type="time" id="shiftStart2" class="form-input"></div>
+                        <div><label class="form-label">End</label><input type="time" id="shiftEnd2" class="form-input"></div>
                     </div>
                 </div>
             </div>
@@ -1169,48 +546,32 @@
     <div class="modal no-print" id="employeeModal">
         <div class="modal-card">
             <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-id-card"></i> Employee File
-                </div>
+                <div class="modal-title"><i class="fas fa-id-card"></i> Employee File</div>
                 <button class="close-modal" onclick="app.closeModals()">&times;</button>
             </div>
             <div class="modal-body">
                 <div style="text-align: center; margin-bottom: 20px;">
                     <img id="empPhotoPreview" src="https://via.placeholder.com/80" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--border);">
                     <div>
-                        <label for="empPhotoInput" style="font-size:12px; color:var(--primary); font-weight:600; cursor:pointer; display:block; margin-top:10px;">
-                            <i class="fas fa-camera"></i> Change Photo
-                        </label>
+                        <label for="empPhotoInput" style="font-size:12px; color:var(--primary); font-weight:600; cursor:pointer; display:block; margin-top:10px;"><i class="fas fa-camera"></i> Change Photo</label>
                         <input type="file" id="empPhotoInput" accept="image/*" style="display: none;">
                     </div>
                 </div>
                 <input type="hidden" id="empPhotoBase64">
                 <div class="form-grid">
-                    <div style="grid-column: span 2; text-align: center; margin-bottom: 20px;">
-                        <label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">Personal Information</label>
-                    </div>
+                    <div style="grid-column: span 2; text-align: center; margin-bottom: 20px;"><label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">Personal Information</label></div>
                     <div class="form-group"><label class="form-label">Full Name</label><input type="text" id="empName" class="form-input"></div>
                     <div class="form-group"><label class="form-label">Job Number</label><input type="text" id="empJobNumber" class="form-input"></div>
                     <div class="form-group"><label class="form-label">Phone</label><input type="tel" id="empPhone" class="form-input"></div>
                     <div class="form-group"><label class="form-label">Nationality</label><input type="text" id="empNationality" class="form-input"></div>
-                    <div style="grid-column: span 2; margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:10px;">
-                        <label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">Compliance Documents</label>
-                    </div>
+                    <div style="grid-column: span 2; margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:10px;"><label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">Compliance Documents</label></div>
                     <div class="form-group"><label class="form-label">Passport No.</label><input type="text" id="empPassportNo" class="form-input"></div>
                     <div class="form-group"><label class="form-label">Passport Expiry</label><input type="date" id="empPassportExp" class="form-input"></div>
                     <div class="form-group"><label class="form-label">EID No.</label><input type="text" id="empEIDNo" class="form-input"></div>
                     <div class="form-group"><label class="form-label">EID Expiry</label><input type="date" id="empEIDExp" class="form-input"></div>
-                    <div style="grid-column: span 2; margin-bottom:10px; margin-top:10px; border-bottom:1px solid var(--border); padding-bottom:10px;">
-                        <label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">HR Settings</label>
-                    </div>
+                    <div style="grid-column: span 2; margin-bottom:10px; margin-top:10px; border-bottom:1px solid var(--border); padding-bottom:10px;"><label style="font-size:12px; font-weight:700; color:var(--primary); text-transform:uppercase;">HR Settings</label></div>
                     <div class="form-group"><label class="form-label">Join Date</label><input type="date" id="empJoinDate" class="form-input"></div>
-                    <div class="form-group"><label class="form-label">Weekly Off</label>
-                        <select id="empWeeklyOff" class="form-select">
-                            <option value="-1">None</option>
-                            <option value="0">Sun</option><option value="1">Mon</option><option value="2">Tue</option>
-                            <option value="3">Wed</option><option value="4">Thu</option><option value="5">Fri</option><option value="6">Sat</option>
-                        </select>
-                    </div>
+                    <div class="form-group"><label class="form-label">Weekly Off</label><select id="empWeeklyOff" class="form-select"><option value="-1">None</option><option value="0">Sun</option><option value="1">Mon</option><option value="2">Tue</option><option value="3">Wed</option><option value="4">Thu</option><option value="5">Fri</option><option value="6">Sat</option></select></div>
                     <div class="form-group"><label class="form-label">Labor Card</label><input type="text" id="empLaborCard" class="form-input"></div>
                     <div class="form-group"><label class="form-label">Insurance Expiry</label><input type="date" id="empInsuranceExp" class="form-input"></div>
                 </div>
@@ -1218,33 +579,21 @@
             <input type="hidden" id="editEmpId">
             <div class="modal-footer">
                 <button class="btn btn-danger" id="deleteEmpBtn" style="display: none;" onclick="app.deleteEmployee()">Delete</button>
-                <button class="btn btn-secondary" id="printEmpBtn" onclick="app.printEmployeeProfile()">
-                    <i class="fas fa-print"></i> Print Profile
-                </button>
+                <button class="btn btn-secondary" id="printEmpBtn" onclick="app.printEmployeeProfile()"><i class="fas fa-print"></i> Print Profile</button>
                 <button class="btn btn-primary" onclick="app.saveEmployee()">Save File</button>
             </div>
         </div>
     </div>
 
-    <!-- 3. Attendance Edit Modal -->
+    <!-- 3. Attendance Modal -->
     <div class="modal no-print" id="attendanceModal">
         <div class="modal-card" style="max-width: 400px;">
-            <div class="modal-header">
-                <div class="modal-title">Edit Attendance</div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
+            <div class="modal-header"><div class="modal-title">Edit Attendance</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
             <div class="modal-body">
                 <div class="form-group"><label class="form-label">Employee</label><input type="text" id="modalEmpName" class="form-input" disabled></div>
                 <div class="form-group"><label class="form-label">Date</label><input type="text" id="modalDate" class="form-input" disabled></div>
-                <div class="form-group"><label class="form-label">Status</label>
-                    <select id="modalStatus" class="form-select" onchange="app.toggleHoursInput()">
-                        <option value="present">Present</option><option value="absent">Absent</option><option value="vacation">Vacation</option><option value="unpaid">Unpaid Leave</option><option value="sick">Sick</option><option value="weeklyoff">Weekly Off</option><option value="emergency">Emergency</option>
-                    </select>
-                </div>
-                <div class="form-group" id="hoursGroup">
-                    <label class="form-label">Total Hours</label>
-                    <input type="number" id="modalHours" class="form-input" value="9" min="0" max="24" step="0.5">
-                </div>
+                <div class="form-group"><label class="form-label">Status</label><select id="modalStatus" class="form-select" onchange="app.toggleHoursInput()"><option value="present">Present</option><option value="absent">Absent</option><option value="vacation">Vacation</option><option value="unpaid">Unpaid Leave</option><option value="sick">Sick</option><option value="weeklyoff">Weekly Off</option><option value="emergency">Emergency</option></select></div>
+                <div class="form-group" id="hoursGroup"><label class="form-label">Total Hours</label><input type="number" id="modalHours" class="form-input" value="9" min="0" max="24" step="0.5"></div>
             </div>
             <div class="modal-footer"><button class="btn btn-primary" onclick="app.saveAttendance()">Update</button></div>
         </div>
@@ -1253,19 +602,10 @@
     <!-- 4. OT Modal -->
     <div class="modal no-print" id="otModal">
         <div class="modal-card" style="max-width: 400px;">
-            <div class="modal-header">
-                <div class="modal-title" style="color: var(--warning);">
-                    <i class="fas fa-clock"></i> Overtime
-                </div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
+            <div class="modal-header"><div class="modal-title" style="color: var(--warning);"><i class="fas fa-clock"></i> Overtime</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
             <div class="modal-body">
                 <div class="form-group"><label class="form-label">Employee</label><select id="otEmpSelect" class="form-select"></select></div>
-                <div class="form-group"><label class="form-label">Date Range</label>
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
-                        <input type="date" id="otStart" class="form-input"><input type="date" id="otEnd" class="form-input">
-                    </div>
-                </div>
+                <div class="form-group"><label class="form-label">Date Range</label><div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;"><input type="date" id="otStart" class="form-input"><input type="date" id="otEnd" class="form-input"></div></div>
                 <div class="form-group"><label class="form-label">Hours</label><input type="number" id="otHours" class="form-input" value="2" step="0.5"></div>
             </div>
             <div class="modal-footer"><button class="btn btn-warning" onclick="app.applyQuickOT()">Apply</button></div>
@@ -1275,16 +615,11 @@
     <!-- 5. Bulk Modal -->
     <div class="modal no-print" id="bulkModal">
         <div class="modal-card">
-            <div class="modal-header">
-                <div class="modal-title">Bulk Update</div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
+            <div class="modal-header"><div class="modal-title">Bulk Update</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
             <div class="modal-body">
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
                     <div class="form-group"><label class="form-label">Employee</label><select id="bulkEmpSelect" class="form-select"></select></div>
-                    <div class="form-group"><label class="form-label">Status</label><select id="bulkStatus" class="form-select">
-                        <option value="present">Present</option><option value="absent">Absent</option><option value="vacation">Vacation</option><option value="unpaid">Unpaid</option><option value="sick">Sick</option><option value="weeklyoff">Off</option>
-                    </select></div>
+                    <div class="form-group"><label class="form-label">Status</label><select id="bulkStatus" class="form-select"><option value="present">Present</option><option value="absent">Absent</option><option value="vacation">Vacation</option><option value="unpaid">Unpaid</option><option value="sick">Sick</option><option value="weeklyoff">Off</option></select></div>
                     <div class="form-group"><label class="form-label">Start Date</label><input type="date" id="bulkStart" class="form-input"></div>
                     <div class="form-group"><label class="form-label">End Date</label><input type="date" id="bulkEnd" class="form-input"></div>
                 </div>
@@ -1296,181 +631,78 @@
     <!-- 6. Request Modal -->
     <div class="modal no-print" id="requestModal">
         <div class="modal-card">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-plane-departure"></i> Leave Request
-                </div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
+            <div class="modal-header"><div class="modal-title"><i class="fas fa-plane-departure"></i> Leave Request</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
             <div class="modal-body">
                 <div class="form-group"><label class="form-label">Employee</label><select id="reqEmpSelect" class="form-select"></select></div>
-                <div class="form-grid">
-                    <div class="form-group"><label class="form-label">Request Type</label><select id="reqType" class="form-select">
-                            <option value="vacation">Annual Vacation (Paid)</option><option value="unpaid">Unpaid Leave</option>
-                        </select></div>
-                    <div class="form-group"><label class="form-label">Start Date</label><input type="date" id="reqStart" class="form-input" onchange="app.calculateReturnDate()"></div>
-                </div>
-                <div class="form-grid">
-                    <div class="form-group"><label class="form-label">Duration (Days)</label><input type="number" id="reqDuration" class="form-input" value="1" min="1" max="30" oninput="app.calculateReturnDate()"></div>
-                    <div class="form-group"><label class="form-label">Return Date</label><input type="text" id="reqReturnDisplay" class="form-input" readonly style="background: var(--bg-body); font-weight: 600; color: var(--primary);">
-                        <input type="hidden" id="reqEndCalc">
-                    </div>
-                </div>
+                <div class="form-grid"><div class="form-group"><label class="form-label">Request Type</label><select id="reqType" class="form-select"><option value="vacation">Annual Vacation (Paid)</option><option value="unpaid">Unpaid Leave</option></select></div><div class="form-group"><label class="form-label">Start Date</label><input type="date" id="reqStart" class="form-input" onchange="app.calculateReturnDate()"></div></div>
+                <div class="form-grid"><div class="form-group"><label class="form-label">Duration (Days)</label><input type="number" id="reqDuration" class="form-input" value="1" min="1" max="30" oninput="app.calculateReturnDate()"></div><div class="form-group"><label class="form-label">Return Date</label><input type="text" id="reqReturnDisplay" class="form-input" readonly style="background: var(--bg-body); font-weight: 600; color: var(--primary);"><input type="hidden" id="reqEndCalc"></div></div>
                 <div class="form-group"><label class="form-label">Reason / Notes</label><textarea id="reqReason" class="form-textarea" placeholder="Reason for leave..."></textarea></div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="app.closeModals()">Cancel</button>
-                <button class="btn btn-primary" onclick="app.submitRequest()">Submit Request</button>
-            </div>
+            <div class="modal-footer"><button class="btn btn-secondary" onclick="app.closeModals()">Cancel</button><button class="btn btn-primary" onclick="app.submitRequest()">Submit Request</button></div>
         </div>
     </div>
 
     <!-- 7. System Info Modal -->
     <div class="modal no-print" id="systemInfoModal">
         <div class="modal-card" style="max-width: 500px;">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-info-circle"></i> System Information
-                </div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
+            <div class="modal-header"><div class="modal-title"><i class="fas fa-info-circle"></i> System Information</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
             <div class="modal-body">
-                <div style="margin-bottom: 20px;">
-                    <h3 style="color: var(--primary); margin-bottom: 10px;">HR Master v6.3</h3>
-                    <p style="color: var(--text-muted); font-size: 14px;">Attendance & Schedule Management System</p>
-                </div>
+                <div style="margin-bottom: 20px;"><h3 style="color: var(--primary); margin-bottom: 10px;">HR Master v6.4</h3><p style="color: var(--text-muted); font-size: 14px;">Attendance & Schedule Management System</p></div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div class="form-group">
-                        <label class="form-label">Version</label>
-                        <div class="form-input" style="background: var(--bg-body);">6.3.0</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Build Date</label>
-                        <div class="form-input" style="background: var(--bg-body);">2024</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Employees</label>
-                        <div class="form-input" style="background: var(--bg-body);" id="sysInfoEmpCount">0</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Requests</label>
-                        <div class="form-input" style="background: var(--bg-body);" id="sysInfoReqCount">0</div>
-                    </div>
-                    <div class="form-group" style="grid-column: span 2;">
-                        <label class="form-label">Storage Usage</label>
-                        <div class="form-input" style="background: var(--bg-body);" id="sysInfoStorage">Calculating...</div>
-                    </div>
-                </div>
-                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
-                    <h4 style="color: var(--text-main); margin-bottom: 10px;">Features:</h4>
-                    <ul style="color: var(--text-muted); font-size: 13px; padding-left: 20px;">
-                        <li>Attendance Tracking</li>
-                        <li>Schedule Management</li>
-                        <li>Leave Request System</li>
-                        <li>Summary Reports</li>
-                        <li>Export to Excel/CSV</li>
-                        <li>Print Reports</li>
-                        <li>Backup & Restore</li>
-                        <li>Dark/Light Mode</li>
-                    </ul>
+                    <div class="form-group"><label class="form-label">Version</label><div class="form-input" style="background: var(--bg-body);">6.4.0</div></div>
+                    <div class="form-group"><label class="form-label">Storage Usage</label><div class="form-input" style="background: var(--bg-body);" id="sysInfoStorage">Calculating...</div></div>
+                    <div class="form-group"><label class="form-label">Employees</label><div class="form-input" style="background: var(--bg-body);" id="sysInfoEmpCount">0</div></div>
+                    <div class="form-group"><label class="form-label">Requests</label><div class="form-input" style="background: var(--bg-body);" id="sysInfoReqCount">0</div></div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" onclick="app.closeModals()">Close</button>
-            </div>
+            <div class="modal-footer"><button class="btn btn-primary" onclick="app.closeModals()">Close</button></div>
         </div>
     </div>
 
-    <!-- 8. System Logs Modal -->
+    <!-- 8. Logs Modal -->
     <div class="modal no-print" id="logsModal">
         <div class="modal-card" style="max-width: 700px;">
-            <div class="modal-header">
-                <div class="modal-title">
-                    <i class="fas fa-clipboard-list"></i> System Logs
-                </div>
-                <button class="close-modal" onclick="app.closeModals()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div style="max-height: 400px; overflow-y: auto;">
-                    <table style="width: 100%; font-size: 12px;">
-                        <thead>
-                            <tr>
-                                <th style="padding: 8px; text-align: left;">Time</th>
-                                <th style="padding: 8px; text-align: left;">Level</th>
-                                <th style="padding: 8px; text-align: left;">Message</th>
-                            </tr>
-                        </thead>
-                        <tbody id="logsBody"></tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-danger" onclick="Logger.clear(); app.updateLogsDisplay();">Clear Logs</button>
-                <button class="btn btn-primary" onclick="app.closeModals()">Close</button>
-            </div>
+            <div class="modal-header"><div class="modal-title"><i class="fas fa-clipboard-list"></i> System Logs</div><button class="close-modal" onclick="app.closeModals()">&times;</button></div>
+            <div class="modal-body"><div style="max-height: 400px; overflow-y: auto;"><table style="width: 100%; font-size: 12px;"><thead><tr><th style="padding: 8px; text-align: left;">Time</th><th style="padding: 8px; text-align: left;">Level</th><th style="padding: 8px; text-align: left;">Message</th></tr></thead><tbody id="logsBody"></tbody></table></div></div>
+            <div class="modal-footer"><button class="btn btn-danger" onclick="Logger.clear(); app.updateLogsDisplay();">Clear Logs</button><button class="btn btn-primary" onclick="app.closeModals()">Close</button></div>
         </div>
     </div>
 
     <!-- Toast -->
-    <div id="toast" class="toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="toastMsg">Saved</span>
-    </div>
+    <div id="toast" class="toast"><i class="fas fa-check-circle"></i><span id="toastMsg">Saved</span></div>
     
     <script>
         const CONFIG = {
             storageKeys: { 
-                employees: 'att_v63_employees', 
-                data: 'att_v63_data', 
-                schedule: 'att_v63_schedule', 
-                leaves: 'att_v63_requests',
-                theme: 'att_v63_theme',
-                logs: 'hr_system_logs_v63'
+                employees: 'att_v64_employees', 
+                data: 'att_v64_data', 
+                schedule: 'att_v64_schedule', 
+                leaves: 'att_v64_requests',
+                theme: 'att_v64_theme',
+                logs: 'hr_system_logs_v64'
+            },
+            settings: {
+                standardWorkHours: 9
             }
         };
 
-        // Enhanced Logger Implementation
         const Logger = {
             logs: [],
             init() {
                 try {
                     const savedLogs = localStorage.getItem(CONFIG.storageKeys.logs);
-                    if(savedLogs) {
-                        this.logs = JSON.parse(savedLogs);
-                    }
-                } catch(e) {
-                    console.error("Failed to load logs from localStorage", e);
-                }
+                    if(savedLogs) this.logs = JSON.parse(savedLogs);
+                } catch(e) { console.error("Failed to load logs", e); }
             },
             log(level, message) {
-                const logEntry = { 
-                    level, 
-                    message, 
-                    timestamp: new Date().toISOString() 
-                };
+                const logEntry = { level, message, timestamp: new Date().toISOString() };
                 this.logs.push(logEntry);
-                
-                // Keep only last 1000 logs
-                if(this.logs.length > 1000) {
-                    this.logs = this.logs.slice(-1000);
-                }
-                
+                if(this.logs.length > 1000) this.logs = this.logs.slice(-1000);
                 console.log(`[${level.toUpperCase()}] ${message}`);
-                
-                try {
-                    localStorage.setItem(CONFIG.storageKeys.logs, JSON.stringify(this.logs));
-                } catch(e) {
-                    console.error("Could not save logs to localStorage.", e);
-                }
+                try { localStorage.setItem(CONFIG.storageKeys.logs, JSON.stringify(this.logs)); } catch(e) { console.error("Could not save logs.", e); }
             },
-            clear() {
-                this.logs = [];
-                localStorage.removeItem(CONFIG.storageKeys.logs);
-                app.showToast('Logs cleared', 'info');
-            },
-            getLogs() {
-                return this.logs;
-            }
+            clear() { this.logs = []; localStorage.removeItem(CONFIG.storageKeys.logs); app.showToast('Logs cleared', 'info'); },
+            getLogs() { return this.logs; }
         };
 
         const app = {
@@ -1486,83 +718,41 @@
                 activeTab: 'summary',
                 pin: '',
                 isLocked: false,
-                summaryFilters: {
-                    start: null,
-                    end: null,
-                    name: ''
-                }
+                scheduleViewDate: new Date(),
+                summaryFilters: { start: null, end: null, name: '' }
             },
             
             init() {
                 try {
                     this.showLoading();
-                    
-                    // Initialize Logger
                     Logger.init();
-                    Logger.log('info', 'HR Master v6.3 initialized');
+                    Logger.log('info', 'HR Master v6.4 initialized');
                     
-                    // Load Dependencies
-                    if (typeof XLSX === 'undefined') {
-                        Logger.log('warn', "XLSX library is missing. Excel export disabled.");
-                    }
+                    if (typeof XLSX === 'undefined') Logger.log('warn', "XLSX library is missing.");
 
-                    // Initial Renders
                     this.loadData();
                     this.loadTheme();
-                    
-                    // Setup Default Date Range for Summary (Current Month)
                     this.setupSummaryDefaults();
-
                     this.renderDateSelectors();
                     this.checkAlerts();
                     this.renderPinPad();
                     this.switchTab('summary');
                     
-                    // Event Listeners
-                    document.getElementById('monthSelect').addEventListener('change', (e) => { 
-                        this.data.currentMonth = parseInt(e.target.value); 
-                        if(this.data.activeTab === 'summary') this.renderSummary();
-                        else this.renderTable(); 
-                    });
-                    
-                    document.getElementById('yearSelect').addEventListener('change', (e) => { 
-                        this.data.currentYear = parseInt(e.target.value); 
-                        if(this.data.activeTab === 'summary') this.renderSummary();
-                        else this.renderTable();
-                    });
-                    
+                    document.getElementById('monthSelect').addEventListener('change', (e) => { this.data.currentMonth = parseInt(e.target.value); if(this.data.activeTab === 'summary') this.renderSummary(); else this.renderTable(); });
+                    document.getElementById('yearSelect').addEventListener('change', (e) => { this.data.currentYear = parseInt(e.target.value); if(this.data.activeTab === 'summary') this.renderSummary(); else this.renderTable(); });
                     document.getElementById('empPhotoInput').addEventListener('change', (e) => this.handleImageUpload(e));
-                    
-                    document.addEventListener('click', (e) => {
-                        if(!e.target.closest('.system-menu')) {
-                            document.getElementById('sysDropdown').classList.remove('show');
-                        }
-                    });
-                    
-                    // Keyboard shortcuts
-                    document.addEventListener('keydown', (e) => {
-                        if (e.key === 'Escape' && document.querySelector('.modal.active')) app.closeModals();
-                        if (e.key === 'F2' && !this.data.isLocked) app.openEmployeeModal();
-                    });
-
-                    // Real-time clock
+                    document.addEventListener('click', (e) => { if(!e.target.closest('.system-menu')) document.getElementById('sysDropdown').classList.remove('show'); });
+                    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.querySelector('.modal.active')) app.closeModals(); });
                     this.updateClock();
                     setInterval(() => this.updateClock(), 1000);
-                    
-                    Logger.log('info', 'Application initialization completed successfully');
+                    Logger.log('info', 'App initialized successfully');
                 } catch (initError) {
-                    Logger.log('error', `Initialization failed: ${initError.message}`);
-                    this.showToast(`Initialization Error: ${initError.message}`, 'error');
-                    console.error("Init failed: " + initError.message);
-                } finally {
-                    this.hideLoading();
-                }
+                    Logger.log('error', `Init failed: ${initError.message}`);
+                    this.showToast(`Init Error: ${initError.message}`, 'error');
+                } finally { this.hideLoading(); }
             },
             
-            updateClock() {
-                const now = new Date();
-                document.getElementById('clock').innerText = now.toTimeString().slice(0,5);
-            },
+            updateClock() { document.getElementById('clock').innerText = new Date().toTimeString().slice(0,5); },
             
             setupSummaryDefaults() {
                 const today = new Date();
@@ -1579,14 +769,12 @@
                 pad.innerHTML = '';
                 for(let i=1; i<=9; i++) {
                     const btn = document.createElement('button');
-                    btn.className = 'pin-btn';
-                    btn.innerText = i;
+                    btn.className = 'pin-btn'; btn.innerText = i;
                     btn.onclick = () => app.handlePinInput(i);
                     pad.appendChild(btn);
                 }
                 const clearBtn = document.createElement('button');
-                clearBtn.className = 'pin-btn';
-                clearBtn.innerHTML = 'X';
+                clearBtn.className = 'pin-btn'; clearBtn.innerHTML = 'X';
                 clearBtn.onclick = () => document.getElementById('pinInput').value = '';
                 clearBtn.style.gridColumn = 'auto';
                 pad.appendChild(clearBtn);
@@ -1595,9 +783,7 @@
             handlePinInput(num) {
                 const input = document.getElementById('pinInput');
                 input.value += num;
-                if(input.value.length === 4) {
-                    this.unlockSystem(input.value);
-                }
+                if(input.value.length === 4) this.unlockSystem(input.value);
             },
 
             showLockScreen() {
@@ -1605,7 +791,7 @@
                 document.getElementById('pinInput').value = '';
                 document.getElementById('lockScreenModal').classList.add('active');
                 document.body.classList.add('locked-screen');
-                Logger.log('info', 'System locked by user');
+                Logger.log('info', 'System locked');
             },
 
             unlockSystem(pin) {
@@ -1614,20 +800,10 @@
                     document.body.classList.remove('locked-screen');
                     document.getElementById('lockScreenModal').classList.remove('active');
                     this.showToast('System Unlocked', 'success');
-                    Logger.log('info', 'System unlocked with default PIN');
+                    Logger.log('info', 'System unlocked');
                 } else {
-                    const input = document.getElementById('pinInput').value;
-                    if(input === pin) {
-                        this.data.isLocked = false;
-                        document.body.classList.remove('locked-screen');
-                        document.getElementById('lockScreenModal').classList.remove('active');
-                        this.showToast('System Unlocked', 'success');
-                        Logger.log('info', 'System unlocked with PIN');
-                    } else {
-                        this.showToast('Invalid PIN', 'error');
-                        this.shakePinPad();
-                        Logger.log('warn', 'Failed unlock attempt with invalid PIN');
-                    }
+                    this.showToast('Invalid PIN', 'error');
+                    this.shakePinPad();
                 }
             },
             
@@ -1637,7 +813,6 @@
                 setTimeout(() => pad.style.transform = "translateX(0)", 100);
             },
 
-            // --- Alert System ---
             checkAlerts() {
                 const alerts = document.getElementById('globalAlerts');
                 alerts.innerHTML = '';
@@ -1650,19 +825,13 @@
                         if(emp.passportExp && emp.passportExp !== '') {
                             const expDate = new Date(emp.passportExp);
                             const daysDiff = Math.floor((expDate - today) / (1000 * 60 * 60 * 24));
-                            if(daysDiff > 0 && daysDiff <= warningDays) {
-                                alertList.push(`Passport expiring in ${daysDiff} days`);
-                            }
+                            if(daysDiff > 0 && daysDiff <= warningDays) alertList.push(`Passport expiring in ${daysDiff} days`);
                         }
-                        
                         if(emp.eidExp && emp.eidExp !== '') {
                             const expDate = new Date(emp.eidExp);
                             const daysDiff = Math.floor((expDate - today) / (1000 * 60 * 60 * 24));
-                            if(daysDiff > 0 && daysDiff <= warningDays) {
-                                alertList.push(`EID expiring in ${daysDiff} days`);
-                            }
+                            if(daysDiff > 0 && daysDiff <= warningDays) alertList.push(`EID expiring in ${daysDiff} days`);
                         }
-                        
                         if(alertList.length > 0) {
                             const alertItem = document.createElement('div');
                             alertItem.className = 'alert-item';
@@ -1671,65 +840,35 @@
                         }
                     });
                 }
-
-                if(alerts.innerHTML !== '') {
-                    alerts.classList.add('active');
-                }
+                if(alerts.innerHTML !== '') alerts.classList.add('active');
             },
 
-            // --- Tab Switching ---
             switchTab(tab) {
-                if(this.data.isLocked) {
-                    this.showToast('System Locked', 'error');
-                    return;
-                }
+                if(this.data.isLocked) { this.showToast('System Locked', 'error'); return; }
                 if(this.data.activeTab === tab) return;
-
                 this.data.activeTab = tab;
-
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
                 document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
-
                 const btnId = 'btn-tab-' + tab;
                 const viewId = 'view-' + tab;
-
-                const btn = document.getElementById(btnId);
-                const view = document.getElementById(viewId);
-                
-                if(btn && view) {
-                    btn.classList.add('active');
-                    view.classList.add('active');
-                    
+                if(document.getElementById(btnId)) document.getElementById(btnId).classList.add('active');
+                if(document.getElementById(viewId)) {
+                    document.getElementById(viewId).classList.add('active');
                     if(tab === 'attendance') this.renderTable();
                     if(tab === 'schedule') this.renderSchedule();
                     if(tab === 'requests') this.renderRequests();
                     if(tab === 'summary') this.renderSummary();
                 }
-                
-                Logger.log('info', `Switched to ${tab} tab`);
+                Logger.log('info', `Switched to ${tab}`);
             },
             
-            showLoading() {
-                document.getElementById('loadingSpinner').style.display = 'block';
-            },
+            showLoading() { document.getElementById('loadingSpinner').style.display = 'block'; },
+            hideLoading() { setTimeout(() => { document.getElementById('loadingSpinner').style.display = 'none'; }, 500); },
             
-            hideLoading() {
-                setTimeout(() => {
-                    document.getElementById('loadingSpinner').style.display = 'none';
-                }, 500);
-            },
-            
-            // --- Enhanced Print Functionality ---
             printContent() {
                 this.showLoading();
                 const printContainer = document.getElementById('printContainer');
-                
-                const header = `
-                    <div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 20px;">
-                        <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 10px;">HR Master v6.3</h1>
-                        <p style="font-size: 14px; color: #666;">Printed on: ${new Date().toLocaleString()}</p>
-                    </div>`;
-
+                const header = `<div style="text-align: center; margin-bottom: 30px; border-bottom: 2px solid var(--primary); padding-bottom: 20px;"><h1 style="font-size: 24px; font-weight: 700; margin-bottom: 10px;">HR Master v6.4</h1><p style="font-size: 14px; color: #666;">Printed on: ${new Date().toLocaleString()}</p></div>`;
                 let periodText = "";
                 if (this.data.summaryFilters.start && this.data.summaryFilters.end) {
                     const s = new Date(this.data.summaryFilters.start);
@@ -1740,171 +879,80 @@
                     const monthName = monthSelect ? monthSelect.options[monthSelect.selectedIndex].text : '';
                     periodText = `Date Period: ${monthName} ${this.data.currentYear}`;
                 }
-
-                const periodHeader = `
-                    <div class="period-header" style="text-align: center; border: 2px solid #000; font-size: 16px; padding: 15px; margin-bottom: 20px;">
-                        ${periodText}
-                    </div>`;
-
+                const periodHeader = `<div class="period-header" style="text-align: center; border: 2px solid #000; font-size: 16px; padding: 15px; margin-bottom: 20px;">${periodText}</div>`;
                 let content = '';
                 const activeTab = this.data.activeTab;
-
                 if(activeTab === 'attendance' || activeTab === 'summary') {
-                    content = `<thead><tr>
-                        <th class="print-th">No</th>
-                        <th class="print-th">Employee Name</th>
-                        <th class="print-th">Working Days</th>
-                        <th class="print-th">Absent Days</th>
-                        <th class="print-th">Vacation Days</th>
-                        <th class="print-th">Sick Days</th>
-                        <th class="print-th">Total Days</th>
-                        <th class="print-th">Overtime Hours</th>
-                        <th class="print-th">Overtime Days</th>
-                        <th class="print-th">Total Overtime</th>
-                    </tr></thead><tbody>`;
-                    
+                    content = `<thead><tr><th class="print-th">No</th><th class="print-th">Employee Name</th><th class="print-th">Working Days</th><th class="print-th">Absent Days</th><th class="print-th">Vacation Days</th><th class="print-th">Sick Days</th><th class="print-th">Total Days</th><th class="print-th">Overtime Hours</th><th class="print-th">Overtime Days</th><th class="print-th">Total Overtime</th></tr></thead><tbody>`;
                     const stats = this.getStatsForPrinting();
-                    
                     stats.forEach((stat, index) => {
-                        content += `
-                        <tr>
-                            <td class="print-td">${index + 1}</td>
-                            <td class="print-td">${stat.emp.name}</td>
-                            <td class="print-td">${stat.workingDays}</td>
-                            <td class="print-td" style="background:#fee2e2;">${stat.absentDays}</td>
-                            <td class="print-td" style="background:#fef3c7;">${stat.vacationDays}</td>
-                            <td class="print-td" style="background:#ede9fe;">${stat.sickDays}</td>
-                            <td class="print-td"><strong>${stat.totalDays}</strong></td>
-                            <td class="print-td" style="color:#b45309;">${stat.overtimeHours}</td>
-                            <td class="print-td">${stat.overtimeDays}</td>
-                            <td class="print-td"><strong>${stat.totalOverTime}</strong></td>
-                        </tr>`;
+                        content += `<tr><td class="print-td">${index + 1}</td><td class="print-td">${stat.emp.name}</td><td class="print-td">${stat.workingDays}</td><td class="print-td" style="background:#fee2e2;">${stat.absentDays}</td><td class="print-td" style="background:#fef3c7;">${stat.vacationDays}</td><td class="print-td" style="background:#ede9fe;">${stat.sickDays}</td><td class="print-td"><strong>${stat.totalDays}</strong></td><td class="print-td" style="color:#b45309;">${stat.overtimeHours}</td><td class="print-td">${stat.overtimeDays}</td><td class="print-td"><strong>${stat.totalOverTime}</strong></td></tr>`;
                     });
-                    
                     content += `</tbody>`;
-                    
-                    const tableHtml = `
-                        ${periodHeader}
-                        <table class="print-table">
-                            ${content}
-                        </table>
-                    `;
-                    
-                    printContainer.innerHTML = header + tableHtml;
-
+                    printContainer.innerHTML = header + periodHeader + `<table class="print-table">${content}</table>`;
                 } else if (activeTab === 'schedule') {
                     const view = document.getElementById('view-schedule');
                     const cloned = view.cloneNode(true);
                     cloned.querySelectorAll('.no-print, .btn').forEach(e => e.remove());
-                    cloned.querySelectorAll('table').forEach(t => {
-                        t.style.width = '100%';
-                        t.classList.add('print-table');
-                        t.querySelectorAll('th, td').forEach(c => c.classList.add('print-th', 'print-td'));
-                    });
+                    cloned.querySelectorAll('table').forEach(t => { t.style.width = '100%'; t.classList.add('print-table'); t.querySelectorAll('th, td').forEach(c => { c.classList.add('print-th', 'print-td'); c.style.cssText = ''; }); });
                     printContainer.innerHTML = header + cloned.outerHTML;
                 } else if (activeTab === 'requests') {
                     const view = document.getElementById('view-requests');
                     const cloned = view.cloneNode(true);
                     cloned.querySelectorAll('.no-print, .btn').forEach(e => e.remove());
-                    cloned.querySelectorAll('table').forEach(t => {
-                        t.style.width = '100%';
-                        t.classList.add('print-table');
-                        t.querySelectorAll('th, td').forEach(c => c.classList.add('print-th', 'print-td'));
-                    });
+                    cloned.querySelectorAll('table').forEach(t => { t.style.width = '100%'; t.classList.add('print-table'); t.querySelectorAll('th, td').forEach(c => { c.classList.add('print-th', 'print-td'); c.style.cssText = ''; }); });
                     printContainer.innerHTML = header + cloned.outerHTML;
                 }
-
-                const footer = `
-                    <div style="margin-top: 40px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ccc; padding-top: 10px;">
-                        Employees: ${this.data.employees.length} | ${periodText} | HR Master v6.3
-                    </div>`;
-                
-                printContainer.innerHTML += footer;
-
-                setTimeout(() => {
-                    window.print();
-                    setTimeout(() => {
-                        printContainer.innerHTML = '';
-                        this.hideLoading();
-                        Logger.log('info', 'Content printed successfully');
-                    }, 1000);
-                }, 500);
+                setTimeout(() => { window.print(); setTimeout(() => { printContainer.innerHTML = ''; this.hideLoading(); }, 1000); }, 500);
             },
             
             getStatsForPrinting() {
                 let stats = [];
-                
+                const standardHours = CONFIG.settings.standardWorkHours;
                 if (this.data.summaryFilters.start && this.data.summaryFilters.end) {
                     const start = new Date(this.data.summaryFilters.start + 'T00:00:00');
                     const end = new Date(this.data.summaryFilters.end + 'T23:59:59');
-                    
+                    if (isNaN(start.getTime()) || isNaN(end.getTime())) return stats;
                     const filteredEmps = this.data.employees.filter(e => e.name.toLowerCase().includes(this.data.summaryFilters.name));
-                    
                     filteredEmps.forEach(emp => {
                         let workingDays = 0, absentDays = 0, vacationDays = 0, sickDays = 0, overtimeHours = 0, overtimeDays = 0;
-                        
                         let day = new Date(start);
                         while (day <= end) {
                             const key = `${day.getFullYear()}_${day.getMonth()}`;
                             const dayNum = day.getDate();
-                            
                             if(this.data.attendance[key] && this.data.attendance[key][emp.id] && this.data.attendance[key][emp.id][dayNum]) {
                                 const att = this.data.attendance[key][emp.id][dayNum];
                                 if(att.status === 'present' || att.status === 'overtime') {
                                     workingDays++;
-                                    if(att.hours > 9) {
-                                        overtimeHours += (att.hours - 9);
-                                        overtimeDays++;
-                                    }
-                                } else if (att.status === 'absent') {
-                                    absentDays++;
-                                } else if (att.status === 'vacation') {
-                                    vacationDays++;
-                                } else if (att.status === 'sick') {
-                                    sickDays++;
-                                }
-                            } else {
-                                workingDays++;
-                            }
+                                    if(att.hours > standardHours) { overtimeHours += (att.hours - standardHours); overtimeDays++; }
+                                } else if (att.status === 'absent') { absentDays++; }
+                                else if (att.status === 'vacation') { vacationDays++; }
+                                else if (att.status === 'sick') { sickDays++; }
+                            } else { workingDays++; }
                             day.setDate(day.getDate() + 1);
                         }
-                        
                         const totalDays = workingDays + absentDays + vacationDays + sickDays;
                         const totalOverTime = overtimeHours;
-                        
                         stats.push({ emp, workingDays, absentDays, vacationDays, sickDays, totalDays, overtimeHours, overtimeDays, totalOverTime });
                     });
                 } else {
                     const daysInMonth = new Date(this.data.currentYear, this.data.currentMonth + 1, 0).getDate();
                     const filteredEmps = this.data.employees.filter(e => e.name.toLowerCase().includes(this.data.summaryFilters.name));
-                    
                     filteredEmps.forEach((emp, index) => {
                         let workingDays = 0, absentDays = 0, vacationDays = 0, sickDays = 0, overtimeHours = 0, overtimeDays = 0;
-                        
                         for(let i=1; i<=daysInMonth; i++) {
                             const att = this.getAttendance(emp.id, i);
                             if(att) {
                                 if(att.status === 'present' || att.status === 'overtime') {
                                     workingDays++;
-                                    if(att.hours > 9) {
-                                        overtimeHours += (att.hours - 9);
-                                        overtimeDays++;
-                                    }
-                                } else if (att.status === 'absent') {
-                                    absentDays++;
-                                } else if (att.status === 'vacation') {
-                                    vacationDays++;
-                                } else if (att.status === 'sick') {
-                                    sickDays++;
-                                }
-                            } else {
-                                workingDays++;
-                            }
+                                    if(att.hours > standardHours) { overtimeHours += (att.hours - standardHours); overtimeDays++; }
+                                } else if (att.status === 'absent') { absentDays++; }
+                                else if (att.status === 'vacation') { vacationDays++; }
+                                else if (att.status === 'sick') { sickDays++; }
+                            } else { workingDays++; }
                         }
-                        
                         const totalDays = workingDays + absentDays + vacationDays + sickDays;
                         const totalOverTime = overtimeHours;
-                        
                         stats.push({ emp, workingDays, absentDays, vacationDays, sickDays, totalDays, overtimeHours, overtimeDays, totalOverTime });
                     });
                 }
@@ -1920,44 +968,18 @@
             renderSummary() {
                 const tbody = document.getElementById('summaryBody');
                 const stats = this.getStatsForPrinting();
-
-                // Update stats cards
                 document.getElementById('totalEmployees').innerText = this.data.employees.length;
                 document.getElementById('pendingRequests').innerText = this.data.requests.filter(r => r.status === 'pending').length;
-                
-                // Calculate totals for stats
-                let totalWorkingDays = 0;
-                let totalOvertime = 0;
-                
-                stats.forEach(stat => {
-                    totalWorkingDays += stat.workingDays;
-                    totalOvertime += stat.overtimeHours;
-                });
-                
+                let totalWorkingDays = 0, totalOvertime = 0;
+                stats.forEach(stat => { totalWorkingDays += stat.workingDays; totalOvertime += stat.overtimeHours; });
                 document.getElementById('totalWorkingDays').innerText = totalWorkingDays;
                 document.getElementById('totalOvertime').innerText = totalOvertime.toFixed(1);
-
                 const summaryRows = stats.map((stat, index) => {
                     const totalDays = stat.workingDays + stat.absentDays + stat.vacationDays + stat.sickDays;
                     const totalOverTime = stat.overtimeHours;
-                    
-                    return `
-                    <tr>
-                        <td>${index + 1}</td>
-                        <td style="text-align:left; padding-left:20px;">${stat.emp.name}</td>
-                        <td>${stat.workingDays}</td>
-                        <td style="background:#fee2e2;">${stat.absentDays}</td>
-                        <td style="background:#fef3c7;">${stat.vacationDays}</td>
-                        <td style="background:#ede9fe;">${stat.sickDays}</td>
-                        <td><strong>${totalDays}</strong></td>
-                        <td style="color:#b45309;">${stat.overtimeHours.toFixed(1)}</td>
-                        <td>${stat.overtimeDays}</td>
-                        <td><strong>${totalOverTime.toFixed(1)}</strong></td>
-                    </tr>`;
+                    return `<tr><td>${index + 1}</td><td style="text-align:left; padding-left:20px;">${stat.emp.name}</td><td>${stat.workingDays}</td><td style="background:#fee2e2;">${stat.absentDays}</td><td style="background:#fef3c7;">${stat.vacationDays}</td><td style="background:#ede9fe;">${stat.sickDays}</td><td><strong>${totalDays}</strong></td><td style="color:#b45309;">${stat.overtimeHours.toFixed(1)}</td><td>${stat.overtimeDays}</td><td><strong>${totalOverTime.toFixed(1)}</strong></td></tr>`;
                 }).join('');
-                
                 tbody.innerHTML = summaryRows || `<tr><td colspan="11" style="text-align:center;">No employees found. Add employees or Import CSV.</td></tr>`;
-                
                 let periodText = "";
                 if(this.data.summaryFilters.start && this.data.summaryFilters.end) {
                     const s = new Date(this.data.summaryFilters.start);
@@ -1971,7 +993,6 @@
                 document.getElementById('summaryPeriodHeader').innerText = `Date Period ${periodText}`;
             },
             
-            // --- Helper Methods ---
             getAttendance(id, day) {
                 const k = `${this.data.currentYear}_${this.data.currentMonth}`;
                 return (this.data.attendance[k] && this.data.attendance[k][id] && this.data.attendance[k][id][day]) || null;
@@ -1983,14 +1004,11 @@
                 const daysInMonth = new Date(this.data.currentYear, this.data.currentMonth + 1, 0).getDate();
                 const days = Array.from({length: daysInMonth}, (_, i) => i + 1);
                 const filteredEmps = this.data.employees.filter(e => e.name.toLowerCase().includes(this.data.searchTerm));
-
                 header.innerHTML = `<th>Employee Details</th>` + days.map(d => `<th>${d}</th>`).join('');
-                
                 tbody.innerHTML = filteredEmps.map(emp => {
                     const daysHtml = days.map(day => {
                         const att = this.getAttendance(emp.id, day);
-                        let status = '';
-                        let bgColor = '';
+                        let status = '', bgColor = '';
                         if (att) {
                             if (att.status === 'present' || att.status === 'overtime') { status = 'P'; bgColor = '#dcfce7'; }
                             else if (att.status === 'absent') { status = 'A'; bgColor = '#fee2e2'; }
@@ -1998,36 +1016,48 @@
                             else if (att.status === 'sick') { status = 'S'; bgColor = '#ede9fe'; }
                             else if (att.status === 'weeklyoff') { status = 'WO'; bgColor = '#f3f4f6'; }
                             else { status = att.status.charAt(0).toUpperCase(); bgColor = '#e5e7eb'; }
-                        } else {
-                            status = '-'; bgColor = '#fff';
-                        }
+                        } else { status = '-'; bgColor = '#fff'; }
                         return `<td style="background:${bgColor}; cursor:pointer;" onclick="app.openAttendanceModal('${emp.id}', ${day})">${status}</td>`;
                     }).join('');
                     return `<tr>
                         <td>
                             <div class="emp-cell" onclick="app.openEmployeeModal('${emp.id}')">
                                 <img src="${emp.photo || 'https://i.pravatar.cc/80?u='+emp.id}" class="emp-avatar">
-                                <div class="emp-info">
-                                    <div class="emp-name">${emp.name}</div>
-                                    <div class="emp-meta">${emp.jobNumber || 'N/A'}</div>
-                                </div>
+                                <div class="emp-info"><div class="emp-name">${emp.name}</div><div class="emp-meta">${emp.jobNumber || 'N/A'}</div></div>
                             </div>
-                        </td>
-                        ${daysHtml}
-                    </tr>`;
+                        </td>${daysHtml}</tr>`;
                 }).join('');
             },
 
             renderSchedule() {
                 const tbody = document.getElementById('scheduleBody');
-                const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const theadRow = document.getElementById('scheduleHeader');
+                const startOfWeek = new Date(this.data.scheduleViewDate);
+                const day = startOfWeek.getDay(); 
+                const diff = startOfWeek.getDate() - day + (0); 
+                startOfWeek.setDate(diff);
+                const endOfWeek = new Date(startOfWeek);
+                endOfWeek.setDate(startOfWeek.getDate() + 6);
+                const options = { month: 'short', day: 'numeric' };
+                document.getElementById('scheduleWeekRange').innerText = `${startOfWeek.toLocaleDateString('en-US', options)} - ${endOfWeek.toLocaleDateString('en-US', options)}, ${startOfWeek.getFullYear()}`;
+                let headerHtml = `<th>Staff Member</th>`;
+                const daysOfWeek = [];
+                for (let i = 0; i < 7; i++) {
+                    const currentDay = new Date(startOfWeek);
+                    currentDay.setDate(startOfWeek.getDate() + i);
+                    const dayName = currentDay.toLocaleDateString('en-US', { weekday: 'short' });
+                    const dayDate = currentDay.getDate();
+                    const isToday = currentDay.toDateString() === new Date().toDateString();
+                    const style = isToday ? 'background:var(--primary); color:white;' : '';
+                    headerHtml += `<th style="${style}"><div style="font-size:10px; opacity:0.8;">${dayName}</div><div style="font-weight:700;">${dayDate}</div></th>`;
+                    daysOfWeek.push(currentDay.getDay()); 
+                }
+                theadRow.innerHTML = headerHtml;
                 tbody.innerHTML = this.data.employees.map(emp => {
-                    const shiftsHtml = days.map((day, idx) => {
-                        const shift = this.data.schedule[emp.id] && this.data.schedule[emp.id][idx];
-                        if (!shift || shift.off) {
-                            return `<td class="off-day">Off</td>`;
-                        }
-                        return `<td class="shift-cell" onclick="app.openShiftModal('${emp.id}', ${idx}, '${day}')">
+                    const shiftsHtml = daysOfWeek.map(dayIndex => {
+                        const shift = this.data.schedule[emp.id] && this.data.schedule[emp.id][dayIndex];
+                        if (!shift || shift.off) return `<td class="off-day">Off</td>`;
+                        return `<td class="shift-cell" onclick="app.openShiftModal('${emp.id}', ${dayIndex}, 'Day ${dayIndex}')">
                             <span class="shift-time">${shift.start1} - ${shift.end1}</span>
                             ${shift.start2 ? `<span class="split-sep">+ </span><span class="shift-time">${shift.start2} - ${shift.end2}</span>` : ''}
                         </td>`;
@@ -2036,35 +1066,24 @@
                         <td>
                             <div class="emp-cell" onclick="app.openEmployeeModal('${emp.id}')">
                                 <img src="${emp.photo || 'https://i.pravatar.cc/80?u='+emp.id}" class="emp-avatar">
-                                <div class="emp-info">
-                                    <div class="emp-name">${emp.name}</div>
-                                    <div class="emp-meta">${emp.jobNumber || 'N/A'}</div>
-                                </div>
+                                <div class="emp-info"><div class="emp-name">${emp.name}</div><div class="emp-meta">${emp.jobNumber || 'N/A'}</div></div>
                             </div>
-                        </td>
-                        ${shiftsHtml}
-                    </tr>`;
+                        </td>${shiftsHtml}</tr>`;
                 }).join('');
             },
 
+            prevWeek() { this.data.scheduleViewDate.setDate(this.data.scheduleViewDate.getDate() - 7); this.renderSchedule(); Logger.log('info', 'Navigated to previous week'); },
+            nextWeek() { this.data.scheduleViewDate.setDate(this.data.scheduleViewDate.getDate() + 7); this.renderSchedule(); Logger.log('info', 'Navigated to next week'); },
+            todaySchedule() { this.data.scheduleViewDate = new Date(); this.renderSchedule(); Logger.log('info', 'Reset schedule view to current week'); },
+
             renderRequests() {
                 const tbody = document.getElementById('requestsBody');
-                const filteredReqs = this.data.requests.filter(req => 
-                    req.empName.toLowerCase().includes(this.data.reqSearchTerm)
-                );
-                tbody.innerHTML = filteredReqs.map(req => `
-                    <tr>
-                        <td>${req.empName}</td>
-                        <td>${req.type}</td>
-                        <td>${req.reason || '-'}</td>
-                        <td>${req.start} - ${req.end}</td>
-                        <td>${req.duration} days</td>
-                        <td><span class="status-badge status-${req.status}">${req.status}</span></td>
-                        <td class="no-print">
-                            ${req.status === 'pending' ? `<button class="btn btn-success" onclick="app.handleRequest('${req.id}', 'approved')">Approve</button> <button class="btn btn-danger" onclick="app.handleRequest('${req.id}', 'rejected')">Reject</button>` : '-'}
-                        </td>
-                    </tr>
-                `).join('');
+                const filteredReqs = this.data.requests.filter(req => req.empName.toLowerCase().includes(this.data.reqSearchTerm));
+                tbody.innerHTML = filteredReqs.map(req => `<tr>
+                    <td>${req.empName}</td><td>${req.type}</td><td>${req.reason || '-'}</td><td>${req.start} - ${req.end}</td><td>${req.duration} days</td>
+                    <td><span class="status-badge status-${req.status}">${req.status}</span></td>
+                    <td class="no-print">${req.status === 'pending' ? `<button class="btn btn-success" onclick="app.handleRequest('${req.id}', 'approved')">Approve</button> <button class="btn btn-danger" onclick="app.handleRequest('${req.id}', 'rejected')">Reject</button>` : '-'}</td>
+                </tr>`).join('');
             },
 
             openShiftModal(empId, dayIdx, dayName) {
@@ -2081,7 +1100,6 @@
                 document.getElementById('shiftModal').classList.add('active');
                 document.getElementById('shiftModal').dataset.empId = empId;
                 document.getElementById('shiftModal').dataset.dayIdx = dayIdx;
-                Logger.log('info', `Opened shift modal for ${emp.name}`);
             },
             
             toggleShiftInputs() {
@@ -2111,7 +1129,29 @@
                 this.renderSchedule();
                 this.closeModals();
                 this.showToast('Schedule updated');
-                Logger.log('info', `Shift saved for ${emp.name}, day ${dayIdx}`);
+            },
+
+            handleImageUpload(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        const ctx = canvas.getContext('2d');
+                        const MAX_WIDTH = 100;
+                        const scaleSize = MAX_WIDTH / img.width;
+                        canvas.width = MAX_WIDTH;
+                        canvas.height = img.height * scaleSize;
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+                        document.getElementById('empPhotoPreview').src = dataUrl;
+                        document.getElementById('empPhotoBase64').value = dataUrl;
+                    };
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
             },
 
             openEmployeeModal(id = null) {
@@ -2138,7 +1178,6 @@
                     document.getElementById('deleteEmpBtn').style.display = 'none';
                 }
                 document.getElementById('employeeModal').classList.add('active');
-                Logger.log('info', `Opened employee modal for ${emp ? emp.name : 'new employee'}`);
             },
 
             saveEmployee() {
@@ -2162,18 +1201,16 @@
                 if (id) {
                     const idx = this.data.employees.findIndex(e => e.id === id);
                     this.data.employees[idx] = { ...this.data.employees[idx], ...empData };
-                    Logger.log('info', `Employee updated: ${empData.name}`);
                 } else {
                     empData.id = 'emp_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
                     this.data.employees.push(empData);
-                    Logger.log('info', `Employee added: ${empData.name}`);
                 }
                 this.saveData();
                 this.renderTable();
                 this.renderSchedule();
                 this.closeModals();
                 this.checkAlerts();
-                this.renderSummary(); // Update summary stats
+                this.renderSummary();
                 this.showToast(id ? 'Employee updated' : 'Employee added');
             },
 
@@ -2189,33 +1226,23 @@
                 this.renderTable();
                 this.renderSchedule();
                 this.closeModals();
-                this.renderSummary(); // Update summary stats
+                this.renderSummary();
                 this.showToast('Employee deleted');
-                Logger.log('info', `Employee deleted: ${emp.name}`);
             },
 
             showToast(message, type = 'success') {
                 const toast = document.getElementById('toast');
                 const icon = toast.querySelector('i');
-                icon.className = type === 'error' ? 'fas fa-exclamation-circle' : 
-                                 type === 'info' ? 'fas fa-info-circle' : 
-                                 type === 'warning' ? 'fas fa-exclamation-triangle' : 
-                                 'fas fa-check-circle';
+                icon.className = type === 'error' ? 'fas fa-exclamation-circle' : type === 'info' ? 'fas fa-info-circle' : 'fas fa-check-circle';
                 document.getElementById('toastMsg').innerText = message;
                 toast.className = `toast ${type} show`;
                 setTimeout(() => toast.classList.remove('show'), 3000);
-            },
-
-            handleReqSearch() {
-                this.data.reqSearchTerm = document.getElementById('reqSearchInput').value.toLowerCase();
-                this.renderRequests();
             },
 
             openRequestModal() {
                 const empSelect = document.getElementById('reqEmpSelect');
                 empSelect.innerHTML = this.data.employees.map(e => `<option value="${e.id}">${e.name}</option>`).join('');
                 document.getElementById('requestModal').classList.add('active');
-                Logger.log('info', 'Opened leave request modal');
             },
 
             calculateReturnDate() {
@@ -2233,9 +1260,7 @@
                 const empId = document.getElementById('reqEmpSelect').value;
                 const emp = this.data.employees.find(e => e.id === empId);
                 const req = {
-                    id: 'req_' + Date.now(),
-                    empId,
-                    empName: emp.name,
+                    id: 'req_' + Date.now(), empId, empName: emp.name,
                     type: document.getElementById('reqType').value,
                     start: document.getElementById('reqStart').value,
                     end: document.getElementById('reqEndCalc').value,
@@ -2247,24 +1272,20 @@
                 this.data.requests.push(req);
                 this.saveData();
                 this.renderRequests();
-                this.renderSummary(); // Update summary stats
+                this.renderSummary();
                 this.closeModals();
                 this.showToast('Request submitted');
-                Logger.log('info', `Leave request submitted by ${emp.name}`);
             },
 
             handleRequest(id, status) {
                 const req = this.data.requests.find(r => r.id === id);
                 if (!req) return;
                 req.status = status;
-                if (status === 'approved') {
-                    this.applyLeaveToAttendance(req);
-                }
+                if (status === 'approved') this.applyLeaveToAttendance(req);
                 this.saveData();
                 this.renderRequests();
-                this.renderSummary(); // Update summary stats
+                this.renderSummary();
                 this.showToast(`Request ${status}`);
-                Logger.log('info', `Leave request ${id} ${status}`);
             },
 
             applyLeaveToAttendance(req) {
@@ -2287,10 +1308,10 @@
                     this.data.attendance = JSON.parse(localStorage.getItem(CONFIG.storageKeys.data) || '{}');
                     this.data.schedule = JSON.parse(localStorage.getItem(CONFIG.storageKeys.schedule) || '{}');
                     this.data.requests = JSON.parse(localStorage.getItem(CONFIG.storageKeys.leaves) || '[]');
-                    Logger.log('info', `Data loaded: ${this.data.employees.length} employees, ${this.data.requests.length} requests`);
+                    Logger.log('info', 'Data loaded successfully');
                 } catch(e) {
-                    Logger.log('error', `Failed to load data from localStorage: ${e.message}`);
-                    this.showToast("Failed to load data. Storage may be corrupted.", 'error');
+                    Logger.log('error', `Data load error: ${e.message}`);
+                    this.showToast("Failed to load data.", 'error');
                 }
             },
 
@@ -2301,8 +1322,8 @@
                     localStorage.setItem(CONFIG.storageKeys.schedule, JSON.stringify(this.data.schedule));
                     localStorage.setItem(CONFIG.storageKeys.leaves, JSON.stringify(this.data.requests));
                 } catch(e) {
-                    Logger.log('error', `Failed to save data to localStorage: ${e.message}`);
-                    this.showToast("Failed to save data. Storage may be full.", 'error');
+                    Logger.log('error', `Save error: ${e.message}`);
+                    this.showToast("Failed to save data. Storage might be full.", 'error');
                 }
             },
 
@@ -2311,7 +1332,6 @@
                 const isDark = document.body.classList.contains('dark-mode');
                 localStorage.setItem(CONFIG.storageKeys.theme, isDark ? 'dark' : 'light');
                 document.getElementById('themeIcon').className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-                Logger.log('info', `Theme switched to ${isDark ? 'dark' : 'light'} mode`);
             },
 
             loadTheme() { 
@@ -2322,52 +1342,30 @@
                 }
             },
 
-            handleSearch() { 
-                this.data.searchTerm = document.getElementById('searchInput').value.toLowerCase(); 
-                this.renderTable(); 
-            },
+            handleSearch() { this.data.searchTerm = document.getElementById('searchInput').value.toLowerCase(); this.renderTable(); },
 
             renderDateSelectors() {
                 const m = ["January","February","March","April","May","June","July","August","September","October","November","December"];
                 const monthSelect = document.getElementById('monthSelect');
-                if (monthSelect) {
-                    monthSelect.innerHTML = m.map((nm,i) => `<option value="${i}" ${i===this.data.currentMonth?'selected':''}>${nm}</option>`).join('');
-                }
+                if (monthSelect) monthSelect.innerHTML = m.map((nm,i) => `<option value="${i}" ${i===this.data.currentMonth?'selected':''}>${nm}</option>`).join('');
                 const y = [2024,2025,2026,2027,2028];
                 const yearSelect = document.getElementById('yearSelect');
-                if (yearSelect) {
-                    yearSelect.innerHTML = y.map(ym => `<option value="${ym}" ${ym===this.data.currentYear?'selected':''}>${ym}</option>`).join('');
-                }
+                if (yearSelect) yearSelect.innerHTML = y.map(ym => `<option value="${ym}" ${ym===this.data.currentYear?'selected':''}>${ym}</option>`).join('');
             },
 
-            handleImageUpload(e) {
-                const file = e.target.files[0];
-                if (!file) return;
-                const reader = new FileReader();
-                reader.onload = event => {
-                    document.getElementById('empPhotoPreview').src = event.target.result;
-                    document.getElementById('empPhotoBase64').value = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            },
+            handleReqSearch() { this.data.reqSearchTerm = document.getElementById('reqSearchInput').value.toLowerCase(); this.renderRequests(); },
+            closeModals() { document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active')); },
 
-            closeModals() { 
-                document.querySelectorAll('.modal').forEach(m=>m.classList.remove('active')); 
-            },
-
-            // --- Modal Actions ---
             openOTModal() {
                 const empSelect = document.getElementById('otEmpSelect');
                 empSelect.innerHTML = this.data.employees.map(e => `<option value="${e.id}">${e.name}</option>`).join('');
                 document.getElementById('otModal').classList.add('active');
-                Logger.log('info', 'Opened overtime modal');
             },
 
             openBulkModal() {
                 const empSelect = document.getElementById('bulkEmpSelect');
                 empSelect.innerHTML = this.data.employees.map(e => `<option value="${e.id}">${e.name}</option>`).join('');
                 document.getElementById('bulkModal').classList.add('active');
-                Logger.log('info', 'Opened bulk update modal');
             },
 
             applyQuickOT() {
@@ -2376,24 +1374,16 @@
                 const start = new Date(document.getElementById('otStart').value);
                 const end = new Date(document.getElementById('otEnd').value);
                 const hours = parseFloat(document.getElementById('otHours').value);
-                if (isNaN(start.getTime()) || isNaN(end.getTime()) || isNaN(hours)) { 
-                    this.showToast('Invalid input', 'error'); 
-                    return; 
-                }
+                if (isNaN(start.getTime()) || isNaN(end.getTime()) || isNaN(hours)) { this.showToast('Invalid input', 'error'); return; }
                 for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
                     const key = `${d.getFullYear()}_${d.getMonth()}`;
                     const day = d.getDate();
                     if (!this.data.attendance[key]) this.data.attendance[key] = {};
                     if (!this.data.attendance[key][empId]) this.data.attendance[key][empId] = {};
                     const existing = this.data.attendance[key][empId][day];
-                    this.data.attendance[key][empId][day] = { status: 'overtime', hours: (existing ? existing.hours : 9) + hours };
+                    this.data.attendance[key][empId][day] = { status: 'overtime', hours: (existing ? existing.hours : CONFIG.settings.standardWorkHours) + hours };
                 }
-                this.saveData();
-                this.renderTable();
-                this.renderSummary(); // Update summary stats
-                this.closeModals();
-                this.showToast('Overtime applied');
-                Logger.log('info', `Overtime applied to ${emp.name}`);
+                this.saveData(); this.renderTable(); this.renderSummary(); this.closeModals(); this.showToast('Overtime applied');
             },
 
             applyBulkAction() {
@@ -2402,23 +1392,15 @@
                 const status = document.getElementById('bulkStatus').value;
                 const start = new Date(document.getElementById('bulkStart').value);
                 const end = new Date(document.getElementById('bulkEnd').value);
-                if (isNaN(start.getTime()) || isNaN(end.getTime())) { 
-                    this.showToast('Invalid dates', 'error'); 
-                    return; 
-                }
+                if (isNaN(start.getTime()) || isNaN(end.getTime())) { this.showToast('Invalid dates', 'error'); return; }
                 for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
                     const key = `${d.getFullYear()}_${d.getMonth()}`;
                     const day = d.getDate();
                     if (!this.data.attendance[key]) this.data.attendance[key] = {};
                     if (!this.data.attendance[key][empId]) this.data.attendance[key][empId] = {};
-                    this.data.attendance[key][empId][day] = { status, hours: status === 'present' ? 9 : 0 };
+                    this.data.attendance[key][empId][day] = { status, hours: status === 'present' ? CONFIG.settings.standardWorkHours : 0 };
                 }
-                this.saveData();
-                this.renderTable();
-                this.renderSummary(); // Update summary stats
-                this.closeModals();
-                this.showToast('Bulk action applied');
-                Logger.log('info', `Bulk action applied to ${emp.name}`);
+                this.saveData(); this.renderTable(); this.renderSummary(); this.closeModals(); this.showToast('Bulk action applied');
             },
 
             openAttendanceModal(empId, day) {
@@ -2427,12 +1409,11 @@
                 document.getElementById('modalEmpName').value = emp.name;
                 document.getElementById('modalDate').value = `${day}/${this.data.currentMonth + 1}/${this.data.currentYear}`;
                 document.getElementById('modalStatus').value = (att && att.status) || 'present';
-                document.getElementById('modalHours').value = (att && att.hours) || 9;
+                document.getElementById('modalHours').value = (att && att.hours) || CONFIG.settings.standardWorkHours;
                 this.toggleHoursInput();
                 document.getElementById('attendanceModal').classList.add('active');
                 document.getElementById('attendanceModal').dataset.empId = empId;
                 document.getElementById('attendanceModal').dataset.day = day;
-                Logger.log('info', `Opened attendance modal for ${emp.name}`);
             },
 
             toggleHoursInput() {
@@ -2453,19 +1434,13 @@
                 this.data.attendance[key][empId][day] = { status, hours };
                 this.saveData();
                 this.renderTable();
-                this.renderSummary(); // Update summary stats
+                this.renderSummary();
                 this.closeModals();
                 this.showToast('Attendance updated');
-                Logger.log('info', `Attendance updated for ${emp.name}`);
             },
 
             downloadBackup() {
-                const dataStr = JSON.stringify({ 
-                    employees: this.data.employees, 
-                    attendance: this.data.attendance, 
-                    schedule: this.data.schedule, 
-                    requests: this.data.requests 
-                }, null, 2);
+                const dataStr = JSON.stringify({ employees: this.data.employees, attendance: this.data.attendance, schedule: this.data.schedule, requests: this.data.requests }, null, 2);
                 const blob = new Blob([dataStr], { type: 'application/json' });
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
@@ -2474,7 +1449,6 @@
                 a.click();
                 URL.revokeObjectURL(url);
                 this.showToast('Backup downloaded');
-                Logger.log('info', 'Backup downloaded');
             },
             
             importCSV(input) {
@@ -2491,23 +1465,11 @@
                     for (let i = 1; i < lines.length; i++) {
                         const vals = lines[i].split(',').map(v => v.trim());
                         if (vals[nameIdx]) {
-                            this.data.employees.push({ 
-                                id: 'emp_' + Date.now() + '_' + i,
-                                name: vals[nameIdx],
-                                jobNumber: vals[headers.indexOf('jobnumber')] || '',
-                                phone: vals[headers.indexOf('phone')] || '',
-                                nationality: vals[headers.indexOf('nationality')] || ''
-                            });
+                            this.data.employees.push({ id: 'emp_' + Date.now() + '_' + i, name: vals[nameIdx], jobNumber: vals[headers.indexOf('jobnumber')] || '', phone: vals[headers.indexOf('phone')] || '', nationality: vals[headers.indexOf('nationality')] || '' });
                             importedCount++;
                         }
                     }
-                    this.saveData();
-                    this.renderTable();
-                    this.renderSchedule();
-                    this.renderSummary(); // Update summary stats
-                    this.showToast(`${importedCount} employees imported`);
-                    Logger.log('info', `${importedCount} employees imported from CSV`);
-                    input.value = '';
+                    this.saveData(); this.renderTable(); this.renderSchedule(); this.renderSummary(); this.showToast(`${importedCount} employees imported`);
                 };
                 reader.readAsText(file);
             },
@@ -2524,62 +1486,28 @@
                         this.data.schedule = data.schedule || {};
                         this.data.requests = data.requests || [];
                         this.saveData();
-                        this.renderTable();
-                        this.renderSchedule();
-                        this.renderRequests();
-                        this.renderSummary(); // Update summary stats
-                        this.checkAlerts();
+                        this.renderTable(); this.renderSchedule(); this.renderRequests(); this.renderSummary(); this.checkAlerts();
                         this.showToast('Backup restored');
-                        Logger.log('info', 'Backup restored successfully');
-                        input.value = '';
-                    } catch(err) {
-                        this.showToast('Invalid backup file', 'error');
-                        Logger.log('error', `Failed to restore backup: ${err.message}`);
-                    }
+                    } catch(err) { this.showToast('Invalid backup file', 'error'); }
                 };
                 reader.readAsText(file);
             },
             
-            resetSystem() {
-                if (!confirm('This will delete all data. Are you sure?')) return;
-                localStorage.clear();
-                location.reload();
-                Logger.log('info', 'System reset by user');
-            },
-
-            toggleSystemMenu() {
-                document.getElementById('sysDropdown').classList.toggle('show');
-            },
+            resetSystem() { if (!confirm('This will delete all data. Are you sure?')) return; localStorage.clear(); location.reload(); },
+            toggleSystemMenu() { document.getElementById('sysDropdown').classList.toggle('show'); },
 
             exportToExcel() {
-                if (typeof XLSX === 'undefined') {
-                    this.showToast("XLSX library not loaded.", "error");
-                    return;
-                }
+                if (typeof XLSX === 'undefined') { this.showToast("XLSX library not loaded.", "error"); return; }
                 const stats = this.getStatsForPrinting();
-                const ws_data = [
-                    ["No", "Employee Name", "Working Days", "Absent Days", "Vacation Days", "Sick Days", "Total Days", "Overtime Hours", "Overtime Days", "Total Overtime"]
-                ];
+                const ws_data = [["No", "Employee Name", "Working Days", "Absent Days", "Vacation Days", "Sick Days", "Total Days", "Overtime Hours", "Overtime Days", "Total Overtime"]];
                 stats.forEach((stat, index) => {
-                    ws_data.push([
-                        index + 1,
-                        stat.emp.name,
-                        stat.workingDays,
-                        stat.absentDays,
-                        stat.vacationDays,
-                        stat.sickDays,
-                        stat.totalDays,
-                        stat.overtimeHours.toFixed(1),
-                        stat.overtimeDays,
-                        stat.totalOverTime.toFixed(1)
-                    ]);
+                    ws_data.push([index + 1, stat.emp.name, stat.workingDays, stat.absentDays, stat.vacationDays, stat.sickDays, stat.totalDays, stat.overtimeHours.toFixed(1), stat.overtimeDays, stat.totalOverTime.toFixed(1)]);
                 });
                 const ws = XLSX.utils.aoa_to_sheet(ws_data);
                 const wb = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(wb, ws, "Summary Report");
                 XLSX.writeFile(wb, `HR_Summary_${new Date().toISOString().slice(0,10)}.xlsx`);
                 this.showToast('Excel file downloaded');
-                Logger.log('info', 'Excel report exported');
             },
 
             exportToCSV() {
@@ -2598,130 +1526,82 @@
                 link.click();
                 document.body.removeChild(link);
                 this.showToast('CSV file downloaded');
-                Logger.log('info', 'CSV report exported');
             },
 
             printEmployeeProfile() {
                 const empId = document.getElementById('editEmpId').value;
-                if (!empId) {
-                    this.showToast("No employee selected", "error");
-                    return;
-                }
+                if (!empId) { this.showToast("No employee selected", "error"); return; }
                 const emp = this.data.employees.find(e => e.id === empId);
                 if (!emp) return;
-                
                 const printContainer = document.getElementById('printContainer');
-                printContainer.innerHTML = `
-                    <div style="padding: 20px; font-family: Arial, sans-serif;">
-                        <h1 style="text-align: center; margin-bottom: 30px;">Employee Profile</h1>
-                        <div style="display: flex; align-items: center; margin-bottom: 30px;">
-                            <img src="${emp.photo || 'https://via.placeholder.com/100'}" style="width: 100px; height: 100px; border-radius: 50%; margin-right: 20px;">
-                            <div>
-                                <h2 style="margin: 0;">${emp.name}</h2>
-                                <p style="color: #666;">${emp.jobNumber || 'N/A'}</p>
-                            </div>
-                        </div>
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.phone || 'N/A'}</td></tr>
-                            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Nationality:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.nationality || 'N/A'}</td></tr>
-                            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Join Date:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.joinDate || 'N/A'}</td></tr>
-                            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Passport No:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.passportNo || 'N/A'}</td></tr>
-                            <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>EID No:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.eidNo || 'N/A'}</td></tr>
-                        </table>
-                        <div style="text-align: center; margin-top: 40px; font-size: 12px; color: #888;">
-                            Printed on: ${new Date().toLocaleString()} | HR Master v6.3
-                        </div>
-                    </div>
-                `;
-                
-                setTimeout(() => {
-                    window.print();
-                    setTimeout(() => {
-                        printContainer.innerHTML = '';
-                    }, 1000);
-                }, 500);
-                
+                printContainer.innerHTML = `<div style="padding: 20px; font-family: Arial, sans-serif;"><h1 style="text-align: center; margin-bottom: 30px;">Employee Profile</h1><div style="display: flex; align-items: center; margin-bottom: 30px;"><img src="${emp.photo || 'https://via.placeholder.com/100'}" style="width: 100px; height: 100px; border-radius: 50%; margin-right: 20px;"><div><h2 style="margin: 0;">${emp.name}</h2><p style="color: #666;">${emp.jobNumber || 'N/A'}</p></div></div><table style="width: 100%; border-collapse: collapse;"><tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Phone:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.phone || 'N/A'}</td></tr><tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Nationality:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.nationality || 'N/A'}</td></tr><tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Join Date:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.joinDate || 'N/A'}</td></tr><tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>Passport No:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.passportNo || 'N/A'}</td></tr><tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>EID No:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${emp.eidNo || 'N/A'}</td></tr></table><div style="text-align: center; margin-top: 40px; font-size: 12px; color: #888;">Printed on: ${new Date().toLocaleString()} | HR Master v6.4</div></div>`;
+                setTimeout(() => { window.print(); setTimeout(() => { printContainer.innerHTML = ''; }, 1000); }, 500);
                 this.showToast('Employee profile printed', 'info');
-                Logger.log('info', `Employee profile printed for ${emp.name}`);
             },
 
-            // --- New Functions for System Info and Logs ---
             showSystemInfo() {
                 document.getElementById('sysInfoEmpCount').innerText = this.data.employees.length;
                 document.getElementById('sysInfoReqCount').innerText = this.data.requests.length;
-                
-                // Calculate storage usage
                 let totalSize = 0;
-                for(let key in localStorage) {
-                    if(localStorage.hasOwnProperty(key)) {
-                        totalSize += localStorage[key].length * 2; // Approximate byte size
-                    }
-                }
+                for(let key in localStorage) if(localStorage.hasOwnProperty(key)) totalSize += localStorage[key].length * 2;
                 document.getElementById('sysInfoStorage').innerText = `${(totalSize / 1024).toFixed(2)} KB`;
-                
                 document.getElementById('systemInfoModal').classList.add('active');
-                Logger.log('info', 'System info modal opened');
             },
 
             showSystemLogs() {
                 this.updateLogsDisplay();
                 document.getElementById('logsModal').classList.add('active');
-                Logger.log('info', 'System logs modal opened');
             },
 
             updateLogsDisplay() {
                 const logsBody = document.getElementById('logsBody');
                 if (logsBody) {
                     const logs = Logger.getLogs();
-                    logsBody.innerHTML = logs.reverse().map(log => `
-                        <tr>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--border);">${new Date(log.timestamp).toLocaleTimeString()}</td>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--border);">
-                                <span class="status-badge status-${log.level}">${log.level}</span>
-                            </td>
-                            <td style="padding: 8px; border-bottom: 1px solid var(--border);">${log.message}</td>
-                        </tr>
-                    `).join('');
+                    logsBody.innerHTML = logs.reverse().map(log => `<tr><td style="padding: 8px; border-bottom: 1px solid var(--border);">${new Date(log.timestamp).toLocaleTimeString()}</td><td style="padding: 8px; border-bottom: 1px solid var(--border);"><span class="status-badge status-${log.level}">${log.level}</span></td><td style="padding: 8px; border-bottom: 1px solid var(--border);">${log.message}</td></tr>`).join('');
                 }
             }
         };
 
-        // Initialize the application when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
-            // Add some sample data if no employees exist (for demo purposes)
-            setTimeout(() => {
-                if(app.data.employees.length === 0) {
-                    const confirmDemo = confirm("No employees found. Would you like to add sample data for demonstration?");
-                    if(confirmDemo) {
-                        app.data.employees = [
-                            {
-                                id: 'emp_1',
-                                name: 'John Smith',
-                                jobNumber: 'EMP001',
-                                phone: '+1-555-123-4567',
-                                nationality: 'American',
-                                photo: 'https://i.pravatar.cc/80?u=john'
-                            },
-                            {
-                                id: 'emp_2',
-                                name: 'Sarah Johnson',
-                                jobNumber: 'EMP002',
-                                phone: '+1-555-987-6543',
-                                nationality: 'Canadian',
-                                photo: 'https://i.pravatar.cc/80?u=sarah'
-                            }
-                        ];
-                        app.saveData();
-                        app.renderTable();
-                        app.renderSchedule();
-                        app.renderSummary();
-                        app.showToast('Sample data loaded', 'info');
-                        Logger.log('info', 'Sample data loaded for demonstration');
-                    }
-                }
-            }, 1000);
-            
+            // Initialize App First
             app.init();
+
+            // Check if Empty (Silent Check)
+            if (app.data.employees.length === 0) {
+                console.log("System is empty. Creating default test employee...");
+                
+                // Create Demo Employee
+                app.data.employees = [{
+                    id: 'emp_demo_01',
+                    name: 'Demo Employee',
+                    jobNumber: 'DEMO-001',
+                    phone: '555-0100',
+                    nationality: 'Local',
+                    passportNo: 'A0000000',
+                    eidNo: '784-0000-0000000-1',
+                    joinDate: new Date().toISOString().split('T')[0],
+                    weeklyOff: '5', // Friday off
+                    photo: 'https://i.pravatar.cc/80?u=demo'
+                }];
+
+                // Create Demo Schedule
+                app.data.schedule = {
+                    'emp_demo_01': {
+                        0: { start1: '08:00', end1: '16:00' }, // Sun
+                        1: { start1: '08:00', end1: '16:00' }, // Mon
+                        2: { start1: '08:00', end1: '16:00' }, // Tue
+                        3: { start1: '08:00', end1: '16:00' }, // Wed
+                        4: { start1: '08:00', end1: '16:00' }  // Thu
+                    }
+                };
+
+                // Save and Update UI
+                app.saveData();
+                app.renderTable();
+                app.renderSchedule();
+                app.renderSummary();
+                Logger.log('info', 'Default test employee created.');
+            }
         });
     </script>
 </body>
