@@ -1029,17 +1029,35 @@
                 }).join('');
             },
 
+            // NEW: Render Schedule with Navigation (FIXED FROZEN ISSUE)
             renderSchedule() {
                 const tbody = document.getElementById('scheduleBody');
                 const theadRow = document.getElementById('scheduleHeader');
-                const startOfWeek = new Date(this.data.scheduleViewDate);
+                const rangeText = document.getElementById('scheduleWeekRange');
+
+                // FIX: Check if elements exist
+                if (!theadRow || !tbody || !rangeText) return;
+
+                // Calculate start of week (Sunday = 0)
+                let startOfWeek = new Date(this.data.scheduleViewDate);
+                
+                // FIX: Check if date is valid
+                if (isNaN(startOfWeek.getTime())) {
+                    startOfWeek = new Date();
+                    this.data.scheduleViewDate = startOfWeek;
+                }
+
                 const day = startOfWeek.getDay(); 
                 const diff = startOfWeek.getDate() - day + (0); 
                 startOfWeek.setDate(diff);
+
+                // Update range text
                 const endOfWeek = new Date(startOfWeek);
                 endOfWeek.setDate(startOfWeek.getDate() + 6);
                 const options = { month: 'short', day: 'numeric' };
-                document.getElementById('scheduleWeekRange').innerText = `${startOfWeek.toLocaleDateString('en-US', options)} - ${endOfWeek.toLocaleDateString('en-US', options)}, ${startOfWeek.getFullYear()}`;
+                rangeText.innerText = `${startOfWeek.toLocaleDateString('en-US', options)} - ${endOfWeek.toLocaleDateString('en-US', options)}, ${startOfWeek.getFullYear()}`;
+
+                // Build Headers with Dates
                 let headerHtml = `<th>Staff Member</th>`;
                 const daysOfWeek = [];
                 for (let i = 0; i < 7; i++) {
@@ -1050,9 +1068,11 @@
                     const isToday = currentDay.toDateString() === new Date().toDateString();
                     const style = isToday ? 'background:var(--primary); color:white;' : '';
                     headerHtml += `<th style="${style}"><div style="font-size:10px; opacity:0.8;">${dayName}</div><div style="font-weight:700;">${dayDate}</div></th>`;
-                    daysOfWeek.push(currentDay.getDay()); 
+                    daysOfWeek.push(currentDay.getDay()); // 0-6
                 }
                 theadRow.innerHTML = headerHtml;
+
+                // Build Rows
                 tbody.innerHTML = this.data.employees.map(emp => {
                     const shiftsHtml = daysOfWeek.map(dayIndex => {
                         const shift = this.data.schedule[emp.id] && this.data.schedule[emp.id][dayIndex];
@@ -1072,6 +1092,7 @@
                 }).join('');
             },
 
+            // NEW: Week Navigation
             prevWeek() { this.data.scheduleViewDate.setDate(this.data.scheduleViewDate.getDate() - 7); this.renderSchedule(); Logger.log('info', 'Navigated to previous week'); },
             nextWeek() { this.data.scheduleViewDate.setDate(this.data.scheduleViewDate.getDate() + 7); this.renderSchedule(); Logger.log('info', 'Navigated to next week'); },
             todaySchedule() { this.data.scheduleViewDate = new Date(); this.renderSchedule(); Logger.log('info', 'Reset schedule view to current week'); },
@@ -1131,6 +1152,7 @@
                 this.showToast('Schedule updated');
             },
 
+            // FIXED: Image Compression
             handleImageUpload(e) {
                 const file = e.target.files[0];
                 if (!file) return;
